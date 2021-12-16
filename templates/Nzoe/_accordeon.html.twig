@@ -1,0 +1,293 @@
+<div class="text-show text-center mb-3">
+    <div class="row">
+            <div class="col-2 text-left">
+                {% if coul is defined and coul is not empty %}
+                <img src="../../../../{{ vich_uploader_asset(utilisateur, 'imagefile') }}" class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                {% elseif edit is defined and edit is not empty %}
+                    <img src="../../../{{ vich_uploader_asset(utilisateur, 'imagefile') }}" class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                {% elseif news is defined and news is not empty or editCont is defined %}
+                    <img src="../../../../{{ vich_uploader_asset(utilisateur, 'imagefile') }}" class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                {% else %}
+                    <img src="../../{{ vich_uploader_asset(utilisateur, 'imagefile') }}" class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                {% endif %}
+            </div>
+            <div class="col-10 pl-5 pt-3">
+                <a class="text-left" href="#">
+                   <strong class="d-none d-sm-block text-white nomImage">{{ app.user.prenom | slice(0, 1) | upper  ~ '.' ~ app.user.nom | slice(0, 14)| upper }}.</strong>
+                </a>
+            </div>
+            <div class="col-12 text-center">
+                <strong class="d-none d-sm-block text-success">En ligne <i class="fa fa-check-circle"></i></strong>
+            </div>
+    </div>
+</div>
+<hr>
+    <div class="text-white text-left text-show" id="headingOne">
+        {{ 'MENU' }}
+    </div>
+<hr>
+<ul class="nav flex-column text-show">
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Utilisateurs', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fas fa-user-tie text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Utilisateurs
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Accueil', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fas fa-users text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Arbre Généalogique
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Cotisations', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="far fa-money-bill-alt text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Cotisations
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Commandes', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fas fa-cart-arrow-down text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Mes Commandes
+                </div>
+            </div>
+        </a>
+    </li>
+    {% if app.user.roles != ['ROLE_USER'] %}
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Contacts', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="far fa-address-book text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Contacts
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Contacts', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fa fa-reply-all text-success" aria-hidden="true"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Reponses
+                </div>
+            </div>
+        </a>
+    </li>
+    {% if app.user.roles != ['ROLE_ADMIN'] %}
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Article', choix:'Accueil'}) }}">
+            <div class="row text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fas fa-book text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Articles
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Presentation', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fa fa-id-card-alt text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Presentation
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Slides', choix:'Accueil'}) }}">
+            <div class="row mb-0 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fa fa-image text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Slides
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'ArrierePlan', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fa fa-tv text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Arriere Plan
+                </div>
+            </div>
+        </a>
+    </li>
+        <li class="nav-item px-2">
+            <a href="{{ path('Essap',{ param:'Groupe','choix':'Accueil'}) }}">
+                <div class="row mb-3 text-white menuAkobi">
+                    <div class="col-2">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                        Groupe
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item px-2">
+            <a href="{{ path('Essap',{ param:'Grade', choix:'Accueil'}) }}">
+                <div class="row mb-0 text-white menuAkobi">
+                    <div class="col-2">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                        Grade
+                    </div>
+                </div>
+            </a>
+        </li>
+
+    {% endif %}
+    {% endif %}
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Commentaires', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="far fa-comment-dots text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Commentaires
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'NewsLetters', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="far fa-newspaper text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    NewsLetter
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Categorie', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fab fa-product-hunt text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Catégorie
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Produits', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fab fa-product-hunt text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Produits
+                </div>
+            </div>
+        </a>
+    </li>
+    {% if app.user.roles != ['ROLE_USER'] and app.user.roles != ['ROLE_ADMIN'] %}
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'AllCommandes', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fas fa-cart-arrow-down text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Toutes les Commandes
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'RenewPassword', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fa fa-lock text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    RenewPassword
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="nav-item px-2">
+        <a href="{{ path('Essap',{ param:'Couleurs', choix:'Accueil'}) }}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fas fa-palette text-success"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Couleur
+                </div>
+            </div>
+        </a>
+    </li>
+    {% endif %}
+    {% if app.user.roles != ['ROLE_USER'] and app.user.roles != ['ROLE_ADMIN'] %}
+    <!--
+    <li class="nav-item px-2">
+        <a href="{# path('Essap',{ param:'Transitions', choix:'Accueil'}) #}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fa fa-exchange-alt"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Transactions
+                </div>
+            </div>
+        </a>
+    </li>-->
+    {% endif %}
+    <!--
+    <li class="nav-item px-2">
+        <a href="{# path('Essap',{ param:'Videos', choix:'Accueil'}) #}">
+            <div class="row mb-3 text-white menuAkobi">
+                <div class="col-2">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="col-10 text-left" style="margin-left: -10px; font-size: smaller">
+                    Vidéos
+                </div>
+            </div>
+        </a>
+    </li>-->
+</ul>

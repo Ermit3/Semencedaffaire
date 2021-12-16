@@ -1,0 +1,48 @@
+<div class="pagination">
+    {{ knp_pagination_render(commPagines) }}
+</div>
+<div class="container-fluid table-responsive">
+    <table class="table table-striped text-show">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th class="w-20 text-left">Nom</th>
+            <th class="w-20 text-left">Prenom</th>
+            <th class="w-10 text-center">sujet</th>
+            <th class="w-30 text-center">Date</th>
+            <th class="w-30 text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for Commentaires in commPagines %}
+                <tr class="">
+                    <th>{{Commentaires.id}}</th>
+                    <td class="text-left">{{Commentaires.nom}}</td>
+                    <td class="text-left">{{Commentaires.prenom}}</td>
+                    <td class="text-center">{{Commentaires.sujet}}</td>
+                    <td class="text-center">{{Commentaires.createAt|date('d/m/yy')}}</td>
+                    <td class="text-center">
+                        <a href="{{ path('admin.edit.commentaire', {id: Commentaires.id, param : 'Commentaires' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                        {% if app.user.roles != ['ROLE_USER'] %}
+                        <form method="post" action="{{ path('admin.delete.cotis', {id: Commentaires.id }) }}" style="display: inline-block"
+                              onsubmit="return confirm('Êtes vous sûr de vouloir supprimer ce Commentaire ? ')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Commentaires.id) }}">
+                            <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    {% if app.user.roles != ['ROLE_USER'] %}
+        <div class="text-right">
+            <a href="{{ path('admin.add.commentaire') }}" class="btn btn-outline-primary btn-sm">Ajouter un Commentaires</a>
+        </div>
+    {% endif %}
+</div>
+    <div class="pagination">
+        {{ knp_pagination_render(commPagines) }}
+    </div>

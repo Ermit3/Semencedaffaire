@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Realisations : E.Service {% endblock %}
+
+{% block body %}
+    <div class="jumbotron-fluid mt-5">
+        <div class="text-center py-5" style="background-color:#f8f9f9">
+            {% if Present is defined %}
+                <img src="{{ asset('images/presentation/'~ Present[1] ~'') }}" height="100" class="d-inline-block align-top" alt="Semence d'Affaires">
+                {% if Present[1].titre is defined %}
+                    <h1 class="text-center text mt-4" style="font-size: 30px;">{{ Present[1].titre}}</h1>
+                {% endif %}
+                {% if Present[1].soustitre is defined %}
+                    <h6 class="text-center text my-1" style="font-size: 12px;">{{ Present[1].soustitre}}</h6>
+                {% endif %}
+                {% if Present[1].texte is defined %}
+                    <div class="container" id="sitepresent">
+                        <p class="text-justify text px-4" style="font-size: 20px;">{{ Present[1].texte}}</p>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card">
+                    <h2></h2><br>
+                    <h2></h2><br>
+                    <h2></h2><br>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <h2></h2><br>
+                    <h6></h6><br>
+                    <h2></h2><br>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <h2></h2><br>
+                    <h2></h2><br>
+                    <h2></h2><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+{% endblock %}

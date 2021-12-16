@@ -1,0 +1,40 @@
+<div class="contPagine">
+    {{ knp_pagination_render(contPagine) }}
+</div>
+<div class="container-fluid table-responsive text-show">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th class="w-10">#</th>
+            <th class="w-10">Nom</th>
+            <th class="w-10">Prenom</th>
+            <th class="w-10">Mail</th>
+            <th class="w-10">Reponse</th>
+            <th class="w-10 text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for Contact in contPagine %}
+            <tr>
+                <th>{{ Contact.id }}</th>
+                <td>{{ Contact.nom }}</td>
+                <td>{{ Contact.Prenom }}</td>
+                <td>{{ Contact.mail }}</td>
+                <td class="text-center">{% if Contact.reponse is not empty %}<i class="far fa-smile text-success 3x"></i>{% else %}<i class="far fa-frown text-danger"></i>{% endif %}</td>
+                <td class="text-center">
+                    <a href="{{ path('admin.edit.contact', {param: 'Contacts',id: Contact.id }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                    <form method="post" action="{{ path('admin.delete.contact', {id: Contact.id }) }}" style="display: inline-block"
+                          onsubmit="return confirm('Êtes vous sûr de vouloir supprimer ce Contact ? ')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Contact.id) }}">
+                        <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="contPagine">
+    {{ knp_pagination_render(contPagine) }}
+</div>

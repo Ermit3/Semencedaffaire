@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Identification' %}
+{% block body %}
+    <!-- Jumbotron -->
+    <div class="py-5" style="background-image: url('../{{ vich_uploader_asset(arrpl, 'imagefile') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <div class="container text-center mt-5">
+            <div class="container">
+                <div class="text-center">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success animated bounceOut delay-5s">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% for message in app.flashes('error') %}
+                        <div class="alert alert-danger animated bounceOut delay-5s">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="px-5 pt-4 pb-5 col-sm-6 card mt-5" style="margin: auto;">
+                <div class="col-sm text-center">
+                    <img src="{{ asset('web/logoEService.png') }}" height="80" class="d-inline-block align-top mb-4" alt="Akobisoft">
+                </div>
+                {{ form_start(form) }}
+                <form action="{{ path('effifiEssape.login') }}" method="post">
+                    <div class="row">
+                        <div class="col-sm text-show">
+                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                            <div class="text-center">
+                                <h3 class="text-break">Mot de passe oublié ?</h3>
+                            </div>
+                            {% if valide is defined %}
+                                <div class="form-group">
+                                    <div class="col" >{{ form_row(form.mail, {'attr': {'readonly':'readonly'}}) }}</div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col" >{{ form_row(form.newpassword, {'attr': {'placeholder':'Votre nouveau password'}}) }}</div>
+                                </div>
+                            {% else %}
+                                <div class="form-group">
+                                    <div class="col" >{{ form_row(form.mail, {'attr': {'placeholder':'Saisir votre Email pour renouveller votre Password'}}) }}</div>
+                                </div>
+                                <div class="form-group" style="visibility: hidden;margin-top: -70px;">
+                                    <div class="col">{{ form_row(form.newpassword, {'attr': {'placeholder':'Votre password'}}) }}</div>
+                                </div>
+                            {% endif %}
+                            <div class="text-center">
+                                <p class="text-light">Vous recevrez un e-mail avec la démarche à suivre</p>
+                            </div>
+                            {{ form_widget(form) }}
+                        </div>
+                    </div>
+                    <div class="text-center mt-2">
+                        <button type="submit" class="btn btn-default btn-rounded">Envoyer</button>
+                    </div>
+                </form>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+                <hr>
+                <div class="text-center">
+                    <a href="{{ path('login',{choix:'Accueil', param:'Accueil'}) }}" class="text-default">Retour</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="container my-2">
+            <div class="row my-3">
+                <div class="my-5">
+
+                </div>
+            </div>
+        </div>
+        <div class="container my-2">
+            <div class="row my-4">
+                <div class="my-5">
+
+                </div>
+            </div>
+        </div>
+        <div class="container my-2">
+            <div class="row my-5">
+                <div class="my-5">
+
+                </div>
+            </div>
+        </div>
+        <div class="container my-2">
+            <div class="row my-4">
+                <div class="my-5">
+
+                </div>
+            </div>
+        </div>
+        <div class="container my-1">
+            <div class="row my-3">
+                <div class="my-5">
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+    <div class="container text-left pt-5">
+        <div class="container mt-5 mx-0 table-responsive text-show mt-1 z-depth-bbs rounded">
+            {% if app.user %}
+                <div class="container">
+                    <div class="my-2">{{ app.user.prenom }} {{ app.user.nom }}</div>
+                </div>
+            {% endif %}
+            {% if items | length > 0 %}
+                <h6 class="ml-3"></h6>
+                <h3 class="card-title my-1 py-1"></h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Produit</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Quantite</th>
+                        <th scope="col">Reference</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Total</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td class="col-md-2">{{ item.produits.titre }}</td>
+                            <td class="col-md-1"><img class="z-depth-1 rounded" style="height: 30%;width: 100%;" src="../../images/produit/{{  item.produits.filenameface }}" alt="{{ item.produits.titre }}"></td>
+                            <td class="col-md-2">
+                                <a href="{{ path('esere', {'id':item.produits.id}) }}?returnToCart=false"><i class="fas fa-minus-circle fa-2x danger-ic"></i></a>
+                                <b>{{ item.qty }}</b>
+                                <a href="{{ path('panier_eve_biom', {'id':item.produits.id, 'titre':item.produits.titre}) }}?returnToCart=true"><i class="fas fa-plus-circle fa-2x success-ic"></i></a>
+                            </td>
+                            <td class="col-md-2">{{ item.produits.titre }}</td>
+                            <td class="col-md-2">{{ item.produits.prix | amount }}</td>
+                            <td class="col-md-2">{{ item.total | amount }}</td>
+                            <td class="col-md-2"><a href="{{ path('panier_eva_biom', {'id': item.produits.id, 'titre':item.produits.titre }) }}"><i class="fas fa-trash-alt fa-2x danger-ic"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="5">Total : </td>
+                        <td colspan="2">{{ totat | amount }}</td>
+                    </tr>
+                    </tfoot>
+                </table>
+                <hr>
+                <!-- -->
+                <div class="text-center mb-5"><h6>Confirmez votre commande en remplissant ce formulaire</h6></div>
+                {% include 'panier/_form.html.twig' %}
+                <!-- -->
+            {% else %}
+                <h2 class="ml-2">Votre panier est vide !</h2>
+            {% endif %}
+        </div>
+    </div><hr>
+{% endblock %}

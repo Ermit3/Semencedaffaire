@@ -1,0 +1,696 @@
+
+.transpa{
+    background-color: rgba(255, 255, 255, 1.9);
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+    font-style: italic;
+    text-align: center;
+    color: #000000 !important;
+}
+.textitre{
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+    text-align: center;
+    font-style: italic;
+    color: black;
+    margin : 0px 0px 1px 15px;
+    padding : 20px 0px 20px 0px;
+}
+.text{
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+    font-style: italic;
+    text-align: center;
+    color: black;
+    padding : 0px 0px 0px 0px;
+}
+
+.text-show{
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+    font-style: italic;
+    text-align: left;
+    color: black;
+    padding : 0px 0px 0px 0px;
+}
+
+.arrSite{
+    color: black;
+    font-size: 20px;
+    background-color: #ffffff;
+}
+.arrSite:hover{
+    color: #ffffff !important;
+    font-size: 20px;
+    background-color: #2b8f8f;
+}
+.imageModal{
+    text-align: center;
+    width: 30%;
+    height: 10%;
+}
+
+.text-shado {
+    text-shadow: 1px 1px #000000;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    outline: 0;
+}
+
+.navbar-toggler span {
+    display: block;
+    background-color: #ffffff;
+    height: 3px;
+    width: 25px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    position: relative;
+    left: 0;
+    opacity: 1;
+}
+
+.navbar-toggler span:nth-child(1),
+.navbar-toggler span:nth-child(3) {
+    -webkit-transition: transform .35s ease-in-out;
+    -moz-transition: transform .35s ease-in-out;
+    -o-transition: transform .35s ease-in-out;
+    transition: transform .35s ease-in-out;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(1) {
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+    opacity: 0.9;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(2) {
+    height: 12px;
+    visibility: hidden;
+    background-color: transparent;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(3) {
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    opacity: 0.9;
+}
+.promotion{
+   background-color: #9ed878;
+}
+.illustranspa{
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+    font-style: italic;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+    width: 100%;
+}
+.textPatisserie{
+    font-style: italic;
+    font-size: 20px;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+}
+.logorestau{
+    width: 100px;
+    height: 100px;
+}
+.gestion{
+    color: white;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+    text-shadow: 1px 1px #000000;
+}
+.biom:hover{
+    box-shadow: 4px 7px 14px 8px rgba(207, 207, 207, 0.2);
+}
+.biom2:hover{
+    box-shadow: 4px 7px 14px 8px rgba(207, 207, 207, 0.2);
+}
+.recherche{
+    border-radius: 10px;
+    box-shadow: 1px 4px 8px 3px rgba(217, 217, 217, 0.2);
+}
+.imageRecherche{
+    border-radius: 10px;
+    box-shadow: 1px 4px 8px 3px rgba(217, 217, 217, 0.2);
+}
+
+.textAcc{
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+.slideTexte{
+    font-family: 'Avantgarde',fantasy,'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand',Georgia;
+    font-style: normal;
+    color: #ffffff;
+}
+.planSite{
+    background-color: rgba(207, 207, 207, 0.5);
+    color: black;
+}
+.planSite:hover{
+    background-color: white;
+    color: #2b8f8f;
+    box-shadow: 1px 3px 8px 2px rgba(230, 230, 230, 0.84);
+}
+
+.menuAkobi{
+    color: black;
+    font-family: Georgia,'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+}
+.menuAkobi:hover{
+    transform: scale(0.65);
+    transition: all 700ms;
+    color: black;
+}
+.soumenu{
+ padding: -5px;
+
+}
+.soumenu:hover{
+    border-radius: 5px;
+    background-color: rgba(230, 230, 230, 0.2);
+}
+@media only screen and (min-width: 320px) and (max-width: 800px)
+{
+    .animated, .h3-responsive, .textAcc, .slideTexte {
+        visibility: hidden;
+        display: none;
+    }
+}
+@media only screen and (min-width: 760px) and (max-width: 1200px)
+{
+    #basicExampleNav {
+        font-size: 70%;
+    }
+}
+
+@media only screen and (min-width: 980px)
+{
+    .nav-link {
+        font-size: 90%;
+    }
+}
+
+@media  {
+    contactstyle
+}
+
+.emailhaut{
+    margin-top: -70px;
+}
+.emails{
+    margin-top: -410px;
+}
+.visible{
+    visibility: hidden;
+}
+@media only screen and (min-width: 320px) and (max-width: 800px)
+{
+    .contactstyle {
+       margin-top: -165px;
+    }
+    .contactstylmail{
+       margin-top: 30px;
+    }
+    .contactstymsg{
+        margin-top: 120px;
+    }
+
+    .contactstytyp{
+        margin-top: 30px;
+    }
+    .imagetourism{
+        box-shadow: 1px 4px 8px 3px rgba(75, 75, 75, 0.83);
+    }
+    .tourism {
+        box-shadow: 1px 4px 8px 3px rgba(75, 75, 75, 0.83);
+    }
+}
+@media only screen and (min-width: 1020px) and (max-width: 1380px)
+{
+    .navbar {
+        padding: 40%;
+    }
+}
+.z-depth-bbs{
+    border-radius: 10px;
+    background-color: rgba(236, 235, 235, 0.1);
+    box-shadow: 2px 10px 15px 5px rgba(207, 207, 207, 0.3);
+}
+.z-depth-produits{
+  /*  border-radius: 10px;
+    background-color: rgba(236, 235, 235, 0.7);
+    box-shadow: 1px 3px 10px 1px rgba(207, 207, 207, 0.3);*/
+}
+.z-depth-produit{
+    border-radius: 5px;
+    background-color: rgba(240, 240, 240, 0.1);
+    box-shadow: 1px 1px 3px 1px rgba(220, 220, 220, 0.4);
+}
+.backGroundproduit{
+    border-radius: 5px;
+    background-color: rgba(236, 235, 235, 0.1);
+    box-shadow: 1px 3px 14px 2px rgba(229, 229, 229, 0.9);
+}
+.text-gain{
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+    font-style: italic;
+    text-align: left;
+}
+.text-gaincentre{
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+    font-style: italic;
+    text-align: center;
+}
+
+.arrPlan{
+    background-color: rgba(236, 235, 235, 0.1);
+    box-shadow: 1px 3px 14px 2px rgba(198, 196, 196, 0.9);
+}
+
+.nomImage{
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif,cursive,fantasy,'URW Chancery L', 'Snell Roundhand','Snell Roundhand';
+    font-style: italic;
+}
+.size-img{
+    height: 40%;
+    width: 40%;
+}
+.tailUser{
+    font-size: 12px;
+}
+.z-depth-user{
+    border-radius: 10px;
+    background-color: rgba(236, 235, 235, 0.1);
+    box-shadow: 2px 10px 15px 5px rgba(207, 207, 207, 0.3);
+}
+
+/* Tree node */
+/*Now the CSS*/
+* {margin: 0; padding: 0;}
+
+.tree ul {
+    padding-top: 20px; position: relative;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+.trees ul {
+    padding-top: 20px; position: relative;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+.trees_ ul {
+    padding-top: 20px; position: relative;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+.tree li {
+    float: left; text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+.trees li {
+    float: left; text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+.trees_ li {
+    float: left; text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before, .tree li::after{
+    content: '';
+    position: absolute; top: 0; right: 50%;;
+    border-top: 1px solid #ccc;
+    width: 50%; height: 21px;
+}
+
+.trees li::before, .trees li::after{
+    content: '';
+    position: absolute; top: 0; right: 50%;;
+    border-top: 1px solid #ccc;
+    width: 50%; height: 21px;
+}
+
+.trees_ li::before, .trees_ li::after{
+    content: '';
+    position: absolute; top: 0; right: 50%;;
+    border-top: 1px solid #ccc;
+    width: 50%; height: 21px;
+}
+
+/*We need to remove left-right connectors from elements without
+any siblings*/
+
+.tree li::after{
+    right: auto; left: 50%;
+    border-left: 1px solid #ccc;
+}
+.trees li::after{
+    right: auto; left: 50%;
+    border-left: 1px solid #ccc;
+}
+.trees_ li::after{
+    right: auto; left: 50%;
+    border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+    display: none;
+}
+.trees li:only-child::after, .trees li:only-child::before {
+    display: none;
+}
+.trees_ li:only-child::after, .trees_ li:only-child::before {
+    display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child{ padding-top: 0;}
+
+.trees li:only-child{ padding-top: 0;}
+
+.trees_ li:only-child{ padding-top: 0;}
+
+
+/*Remove left connector from first child and
+right connector from last child*/
+.tree li:first-child::before, .tree li:last-child::after{
+    border: 0 none;
+}
+
+.trees li:first-child::before, .trees li:last-child::after{
+    border: 0 none;
+}
+
+.trees_ li:first-child::before, .trees_ li:last-child::after{
+    border: 0 none;
+}
+
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before{
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+.trees li:last-child::before{
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+.trees_ li:last-child::before{
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree li:first-child::after{
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+
+.trees li:first-child::after{
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+
+.trees_ li:first-child::after{
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before{
+    content: '';
+    position: absolute; top: 0; left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0; height: 20px;
+}
+
+.trees ul ul::before{
+    content: '';
+    position: absolute; top: 0; left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0; height: 20px;
+}
+
+.trees_ ul ul::before{
+    content: '';
+    position: absolute; top: 0; left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0; height: 20px;
+}
+
+/*Time to add downward connectors from parents*/
+.tree li a{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #6a9ed3;
+    font-family: arial, verdana, tahoma;
+    font-size: 9px;
+    display: inline-block;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    box-shadow: 1px 3px 14px 2px rgba(236, 234, 234, 0.9);
+}
+
+.trees li a{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #6a9ed3;
+    font-family: arial, verdana, tahoma;
+    font-size: 9px;
+    display: inline-block;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    box-shadow: 1px 3px 14px 2px rgba(236, 234, 234, 0.9);
+}
+
+.trees_ li a{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #6a9ed3;
+    font-family: arial, verdana, tahoma;
+    font-size: 9px;
+    display: inline-block;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    box-shadow: 1px 3px 14px 2px rgba(236, 234, 234, 0.9);
+}
+
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover, .tree li a:hover+ul li a {
+    background: #abf5a8; color: #000; border: 1px solid #94a0b4;
+}
+
+.trees li a:hover, .trees li a:hover+ul li a {
+    background: #f6f08e; color: #000; border: 1px solid #94a0b4;
+}
+
+.trees_ li a:hover, .trees_ li a:hover+ul li a {
+    background: #c8e4f8 ; color: #000; border: 1px solid #94a0b4;
+}
+
+/*Connector styles on hover*/
+.tree li a:hover+ul li::after,
+.tree li a:hover+ul li::before,
+.tree li a:hover+ul::before,
+.tree li a:hover+ul ul::before{
+    border-color:  #94a0b4;
+}
+
+.trees li a:hover+ul li::after,
+.trees li a:hover+ul li::before,
+.trees li a:hover+ul::before,
+.trees li a:hover+ul ul::before{
+    border-color:  #94a0b4;
+}
+
+
+.trees_ li a:hover+ul li::after,
+.trees_ li a:hover+ul li::before,
+.trees_ li a:hover+ul::before,
+.trees_ li a:hover+ul ul::before{
+    border-color:  #94a0b4;
+}
+
+/**
+ * ----------------------------------------
+ * animation flip-in-ver-right
+ * ----------------------------------------
+ */
+
+.flip-in-ver-right {
+    -webkit-animation: flip-in-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+/* ----------------------------------------------
+ * Generated by Animista on 2021-5-25 12:39:12
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info.
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+
+@-webkit-keyframes flip-in-ver-right {
+    0% {
+        -webkit-transform: rotateY(-80deg);
+        transform: rotateY(-80deg);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+        opacity: 1;
+    }
+}
+@keyframes flip-in-ver-right {
+    0% {
+        -webkit-transform: rotateY(-80deg);
+        transform: rotateY(-80deg);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+        opacity: 1;
+    }
+}
+
+.catergorie{
+    box-shadow: 4px 7px 14px 8px rgba(210, 210, 210, 0.2);
+}
+
+.catergorie:hover{
+    box-shadow: 4px 7px 14px 8px rgba(193, 193, 193, 0.2);
+    margin-bottom: -10px;
+}
+.cat:hover{
+    margin-bottom: 10px;
+}
+
+.produit{
+    box-shadow: 4px 7px 14px 8px rgba(144, 144, 144, 0.2);
+}
+.produit:hover{
+    box-shadow: 4px 7px 14px 8px rgba(107, 107, 107, 0.2);
+}
+.textProdit{
+    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+    font-family: 'sans-serif';
+    font-size: 20px;
+    display: inline-block;
+}
+
+ul{
+    margin-left :30px ;
+    list-style-type: none;
+}
+.panier:hover{
+    color: white;
+    text-decoration-color: white;
+    background-color: #07f807;
+}
+.posepanier{
+    margin-left :30px ;
+}
+.textPanier{
+    font-size:18px;
+    text-align:center;
+    font-family:'Times New Roman';
+}
+.textPaniers{
+    font-size:18px;
+    text-align:justify;
+    font-family:'Times New Roman',
+    fantasy;
+}
+/*Thats all. I hope you enjoyed it.
+Thanks :)*/

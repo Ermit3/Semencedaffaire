@@ -1,0 +1,46 @@
+<div class="pagination">
+    {{ knp_pagination_render(prodPagines) }}
+</div>
+<div class="container-fluid table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th class="w-20 text-left">Titre</th>
+            <th class="w-30 text-center">image</th>
+            <th class="w-20 text-center">afficher</th>
+            <th class="w-30 text-center">Actions</th>
+            <th class="w-30 text-center">Source</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for Produit in prodPagines %}
+            <tr>
+                <th scope="row">{{ Produit.id }}</th>
+                <td class="text-left">{{ Produit.titre }}</td>
+                <td class="text-center"><img class="z-depth-1 rounded" style="height: 40px;width: 70px;" src="../{{ vich_uploader_asset(Produit, 'imagefile') }}"></td>
+                <td class="text-center"><img class="z-depth-1 rounded" style="height: 40px;width: 70px;" src="../{{ vich_uploader_asset(Produit, 'imagefiledos') }}"></td>
+                <td class="text-center">{{ Produit.afficher }}</td>
+                <td class="text-center">
+                    <a href="{{ path('admin.edit.produit', {id: Produit.id, param : 'Produits' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                    <form method="post" action="{{ path('admin.delete.produit', {id: Produit.id }) }}" style="display: inline-block"
+                          onsubmit="return confirm('Êtes vous sûr de vouloir supprimer ce Produit ? ')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Produit.id) }}">
+                        <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+                <th class="text-center">{{ Produit.source }}</th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <div class="text-right">
+        <a href="{{ path('admin.new.produit') }}" class="btn btn-outline-primary btn-sm">Ajouter un Produit</a>
+    </div>
+</div>
+<hr>
+<div class="pagination">
+    {{ knp_pagination_render(prodPagines) }}
+</div>

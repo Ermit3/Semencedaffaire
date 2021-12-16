@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="google-site-verification" content="yPXWqwp1jjOqQr8S6Fz1jzvnd-t4j-clAmtxyQTuw9o"/>
+        <meta name="Author" content="Akobisoft"/>
+        <meta name="publisher"
+              content="semence d'affaires, Semence d'Affaires, SEMENCE d'AFFAIRES, semence, AFFAIRES, e.services, E.services, E.SERVICES, E.Services, Akobisoft"/>
+        <meta name="Description"
+              content="semence d'affaires, Semence d'Affaires, SEMENCE d'AFFAIRES, semence, AFFAIRES, e.services, E.services, E.SERVICES, E.Services, Akobisoft"/>
+        <meta name="KeyWords"
+              content="semence d'affaires, Semence d'Affaires, SEMENCE d'AFFAIRES, semence, AFFAIRES, e.services, E.services, E.SERVICES, E.Services, Akobisoft"/>
+        <link rel="icon" href="{{ asset('web/logoEService.png') }}" type="image/x-icon">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/mdb.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/mdb.lite.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+
+        {# block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {# endblock #}
+    </head>
+    <body>
+        {% include '_navbarSemence.html.twig' %}
+            {% block body %}
+                <div class="row">
+                    <div class="text-center">
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-success animated bounceOut delay-5s">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% for message in app.flashes('error') %}
+                            <div class="alert alert-danger animated bounceOut delay-5s">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% for message in app.flashes('warning') %}
+                            <div class="alert alert-warning animated bounceOut delay-5s">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% for message in app.flashes('info') %}
+                            <div class="alert alert-info animated bounceOut delay-5s">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endblock %}
+        {% block footer %}
+            {% include '_footSemence.html.twig' %}
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+        <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/popper.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/mdb.min.js') }}"></script>
+    </body>
+</html>

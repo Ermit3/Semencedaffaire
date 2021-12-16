@@ -1,0 +1,31 @@
+
+{{ form_start(form) }}
+<div class="container rounded z-depth-bbs">
+    <div class="row">
+        {% if form.vars.value.filename is not empty %}
+            <div class="col-12 text-center">
+                <img class="rounded z-depth-bbs" style="height: 90%;width: 50%;" src="../../../../images/categorie/{{ form.vars.value.filename }}" alt="Semence D'affaires">
+            </div>
+        {% else %}
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="col">{{ form_row(form.nom) }}</div>
+        </div>
+        <div class="col-6">
+            {{ form_row(form.imagefile) }}
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <a href="{{ path('Essap',{ param:'Categorie', choix:'Accueil'}) }}">{{ 'Retour' }}</a>
+</div>
+{{ form_widget(form) }}
+<div class="row">
+    <div class="col text-center">
+        <button class="btn btn-outline-default btn-rounded waves-effect text-center">{{ button|default('Enregistrer')}}<i class="far fa-paper-plane ml-2"></i></button>
+    </div>
+</div>
+{{ form_end(form) }}

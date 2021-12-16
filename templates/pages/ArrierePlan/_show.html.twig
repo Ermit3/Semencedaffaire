@@ -1,0 +1,45 @@
+<div class="pagination">
+    {{ knp_pagination_render(pagineArrPl) }}
+</div>
+<div class="container-fluid table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th class="w-20 text-left">Nom</th>
+            <th class="w-20 text-center">image</th>
+            <th class="w-20 text-center">afficher</th>
+            <th class="w-20 text-center">Actions</th>
+            <th class="w-20 text-left">Source</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for Arrpl in pagineArrPl %}
+            <tr>
+                <th>{{ Arrpl.id }}</th>
+                <td class="text-left">{{ Arrpl.nom }}</td>
+                <td class="text-center"><img class="z-depth-1 rounded" style="height: 50px;width: 80px;" src="../../{{ vich_uploader_asset(Arrpl, 'imagefile') }}"></td>
+                <td class="text-center">{{ Arrpl.afficher }}</td>
+                <td class="text-center">
+                    <a href="{{ path('admin.edit.arrpl', {id: Arrpl.id, param : 'ArrierePlan' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                    <form method="post" action="{{ path('admin.delete.arrpl', {id: Arrpl.id }) }}" style="display: inline-block"
+                          onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cet Arriere Plan ? ')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Arrpl.id) }}">
+                        <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+                <td class="text-left">{{ Arrpl.source }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <div class="text-right">
+        <a href="{{ path('admin.new.arrpl') }}" class="btn btn-outline-primary btn-sm">Ajouter un Arriere plan</a>
+    </div>
+</div>
+<hr>
+<div class="pagination">
+    {{ knp_pagination_render(pagineArrPl) }}
+</div>

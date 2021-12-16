@@ -1,0 +1,45 @@
+<div class="pagination">
+    {{ knp_pagination_render(slidePagine) }}
+</div>
+<div class="container-fluid table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th class="w-10 text-left">Texte</th>
+            <th class="w-20 text-center">Image</th>
+            <th class="w-10 text-center">Afficher</th>
+            <th class="w-40 text-center">Actions</th>
+            <th class="w-20 text-center">Source</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for slide in slidePagine %}
+            <tr>
+                <th>{{ slide.id }}</th>
+                <td class="text-left">{{ slide.textSlide|slice(0,50) }}...</td>
+                <td class="text-center"><img class="z-depth-1 rounded" style="height: 45px;width: 80px;" src="../../{{ vich_uploader_asset(slide, 'imagefile') }}"></td><!-- {# vich_uploader_asset(Arrpl, 'imagefile') #}-->
+                <td class="text-center">{{ slide.afficher }}</td>
+                <td class="text-center">
+                    <a href="{{ path('admin.edit.slide', {id: slide.id, param : 'Slides' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                    <form method="post" action="{{ path('admin.delete.slide', {id: slide.id }) }}" style="display: inline-block"
+                          onsubmit="return confirm('Êtes vous sûr de vouloir supprimer ce Slide ? ')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ slide.id) }}">
+                        <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+                <td class="text-center">{{ slide.source }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <div class="text-right">
+        <a href="{{ path('admin.new.slide') }}" class="btn btn-outline-primary btn-sm">Ajouter un Slide</a>
+    </div>
+</div>
+<hr>
+<div class="pagination">
+    {{ knp_pagination_render(slidePagine) }}
+</div>

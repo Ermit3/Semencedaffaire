@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Identification' %}
+{% block body %}
+    <div class="mt-5 pb-5 view" style="background-image: url('{{ vich_uploader_asset(arrpl, 'imagefile') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <div class="container mt-5 pb-5">
+            <div class="px-5 pt-2 pb-5 col-sm-6 card mt-5 text-show" style="margin: auto;">
+                <div class="col-sm text-center">
+                    <img src="{{ asset('web/logoEService.png') }}" height="80" class="d-inline-block align-top mb-4" alt="Semence d'Affaires">
+                </div>
+                <form action="{{ path('login',{choix:'Accueil', param:'Accueil'}) }}" method="post">
+                    <div class="row">
+                        <div class="col-sm">
+                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                            <div class="form-group">
+                                <label for="username">Login :</label>
+                                <input placeholder="Mail" type="text" id="username" name="_username" class="form-control" value="{{ dernier_user }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Mot de passe :</label>
+                                <input placeholder="Mote de passe" type="password" id="password" name="_password" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2">
+                        <button type="submit" class="btn btn-default btn-rounded">Se Connecter</button>
+                    </div>
+                </form>
+                <hr>
+                <div class="text-center">
+                    <a href="{{ path('effifiEssape.login') }}" class="text-default">Mot de passe oublié ?</a>
+                </div>
+            </div>
+            <script>/*
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6Ldit-MUAAAAACeTmIFk6MdVoUI7LxWG9ORC7Lw-', {action: 'homepage'}).then(function(token) {
+                        document.getElementById('g-recaptcha-response').value=token;
+                    });
+                });*/
+            </script>
+        </div>
+        <div class="container my-2">
+            <div class="row my-3">
+                <div class="my-5">
+
+                </div>
+            </div>
+        </div>
+        <div class="container my-2">
+            <div class="row my-4">
+                <div class="my-5">
+
+                </div>
+            </div>
+        </div>
+        <div class="container my-2">
+            <div class="row my-5">
+                <div class="my-5">
+
+                </div>
+            </div>
+        </div>
+        <div class="container my-1">
+            <div class="row my-3">
+                <div class="my-5">
+
+                </div>
+            </div>
+        </div>
+        <div class="container my-1">
+            <div class="row my-3">
+                <div class="my-5">
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

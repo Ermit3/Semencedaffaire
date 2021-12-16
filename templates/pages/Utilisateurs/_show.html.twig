@@ -1,0 +1,68 @@
+{% if app.user.roles != ['ROLE_USER'] %}
+<div class="navigation">
+    {{ knp_pagination_render(pagineUtill) }}
+</div>
+{% endif %}
+<div class="container-fluid table-responsive">
+    <table class="table table-striped text-show">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th class="w-10">Nom</th>
+            <th class="w-10">Prenom</th>
+            <th class="w-10">Groupe</th>
+            <th class="w-10">Grade</th>
+            <th class="w-10">Role</th>
+            <th class="w-40 text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if pagineUtill is defined %}
+            {% for Utilisateur in pagineUtill %}
+                <tr class="">
+                    <th>{{Utilisateur.id}}</th>
+                    <td>{{Utilisateur.nom}}</td>
+                    <td>{{Utilisateur.prenom}}</td>
+                    <td>{{Utilisateur.getGroupe.nom}}</td>
+                    <td>{{Utilisateur.getGrade.nom}}</td>
+                    <td><img style="height:30px;width:30px;" src="../../web/{% if Utilisateur.roles == ['ROLE_USER'] %}{{ 'user.png' }}{% else %}{{ 'admin.png' }}{% endif %}"></td>
+                    <td class="text-center">
+                        <a href="{{ path('admin.edit.util', {id: Utilisateur.id, param : 'Utilisateurs' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                        {% if app.user.roles != ['ROLE_USER'] %}
+                            <form method="post" action="{{ path('admin.delete.util', {id: Utilisateur.id }) }}" style="display: inline-block"
+                                  onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cet Utilisateur ? ')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Utilisateur.id) }}">
+                                <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr class="">
+                <th>{{utilisateur.id}}</th>
+                <td>{{utilisateur.nom}}</td>
+                <td>{{utilisateur.prenom}}</td>
+                <td>{{utilisateur.getGroupe.nom}}</td>
+                <td>{{utilisateur.getGrade.nom}}</td>
+                <td><img style="height:30px;width:30px;" src="../../web/{% if utilisateur.roles == ['ROLE_USER'] %}{{ 'user.png' }}{% else %}{{ 'admin.png' }}{% endif %}"></td>
+                <td class="text-center">
+                    <a href="{{ path('admin.edit.util', {id: utilisateur.id, param : 'Utilisateurs' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                </td>
+            </tr>
+       {% endif %}
+        </tbody>
+    </table>
+    {% if app.user.roles != ['ROLE_USER'] %}
+    <div class="text-right">
+        <a href="{{ path('admin.add.util',{ param :'Utilisateurs'}) }}" class="btn btn-outline-primary btn-sm">Ajouter un Utilisateur</a>
+    </div>
+    {% endif %}
+</div>
+<hr>
+{% if app.user.roles != ['ROLE_USER'] %}
+<div class="navigation">
+    {{ knp_pagination_render(pagineUtill) }}
+</div>
+{% endif %}

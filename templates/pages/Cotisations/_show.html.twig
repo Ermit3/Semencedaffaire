@@ -1,0 +1,74 @@
+{% if app.user.roles != ['ROLE_USER'] %}
+<div class="pagination">
+    {{ knp_pagination_render(pagineCotis) }}
+</div>
+{% endif %}
+<div class="container-fluid table-responsive">
+    <table class="table table-striped text-show">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th class="w-20 text-left">Nom</th>
+            <th class="w-20 text-left">Prenom</th>
+            <th class="w-10 text-center">Cotisation</th>
+            <th class="w-10 text-center">afficher</th>
+            <th class="w-30 text-center">Actions</th>
+            <th class="w-10 text-left">Source</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if pagineUtill is defined %}
+            {% for Cotisations in pagineCotis %}
+                <tr class=""{% if dernier is defined and dernier == Cotisations.utilisateur.id %} style="background-color: #82d982" {% endif %} >
+                    <th>{{Cotisations.id}}</th>
+                    <td class="text-left">{{Cotisations.utilisateur.nom}}</td>
+                    <td class="text-left">{{Cotisations.utilisateur.prenom}}</td>
+                    <td class="text-center">{{Cotisations.montant|amount}}</td>
+                    <td class="text-center">{{Cotisations.afficher}}</td>
+                    <td class="text-center">
+                        <a href="{{ path('admin.edit.cotis', {id: Cotisations.id, param : 'Cotisations' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                        <!--<form method="post" action="{# path('admin.delete.cotis', {id: Cotisations.id }) }}" style="display: inline-block"
+                              onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cette Cotisations ? ')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Cotisations.id) #}">
+                            <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                        </form>-->
+                    </td>
+                    <td class="text-left">{{Cotisations.source}}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr class="">
+                <th>{{Cotisations.id}}</th>
+                <td class="text-left">{{Cotisations.utilisateur.nom}}</td>
+                <td class="text-left">{{Cotisations.utilisateur.prenom}}</td>
+                <td class="text-center">{{Cotisations.montant|amount}}</td>
+                <td class="text-center">{{Cotisations.afficher}}</td>
+                <td class="text-center">
+                    <a href="{{ path('admin.edit.cotis', {id: Cotisations.id, param : 'Cotisations' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                    {% if app.user.roles != ['ROLE_USER'] %}
+                    <!--<form method="post" action="{# path('admin.delete.cotis', {id: Cotisations.id }) }}" style="display: inline-block"
+                          onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cette Cotisations ? ')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Cotisations.id) #}">
+                        <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                    </form>-->
+                    {% endif %}
+                </td>
+                <td class="text-left">{{Cotisations.source}}</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <hr>
+    {% if app.user.roles != ['ROLE_USER'] %}
+   <!-- <div class="text-right">
+        <a href="{# path('admin.add.cotis') #}" class="btn btn-outline-primary btn-sm">Ajouter une Cotisation</a>
+    </div>-->
+    {% endif %}
+</div>
+{% if app.user.roles != ['ROLE_USER'] %}
+    <div class="pagination">
+        {{ knp_pagination_render(pagineCotis) }}
+    </div>
+{% endif %}

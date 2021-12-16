@@ -1,0 +1,68 @@
+{{ form_start(form) }}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            {% if app.user.roles != ['ROLE_USER'] %}
+                    <div class="col">{{form_row(form.utilisateur,{'attr':{'readonly':'readonly'}})}}</div>
+                    <div class="col">{{form_row(form.idsponsor)}}</div>
+                    <div class="col">{{form_row(form.quartier)}}</div>
+                    <div class="col">{{form_row(form.nomsponsor)}}</div>
+                {% else %}
+                    <div class="col">{{form_row(form.utilisateur,{'attr':{'readonly':'readonly'}})}}</div>
+                    <div class="col">{{form_row(form.idsponsor,{'attr':{'readonly':'readonly'}})}}</div>
+                    <div class="col">{{form_row(form.quartier,{'attr':{'readonly':'readonly'}})}}</div>
+                    <div class="col">{{form_row(form.nomsponsor,{'attr':{'readonly':'readonly'}})}}</div>
+            {% endif %}
+        </div>
+        <div class="col-sm-4">
+            {% if app.user.roles != ['ROLE_USER'] %}
+            <div class="col">{{form_row(form.montant)}}</div>
+            <div class="col">{{form_row(form.telephone)}}</div>
+            <div class="col">{{form_row(form.prenomsponsor)}}</div>
+            <div class="col">{{form_row(form.source,{'attr':{'readonly':'readonly'}})}}</div>
+            <div class="col mt-5">{{form_row(form.afficher)}}</div>
+            {% else %}
+                <div class="col">{{form_row(form.montant,{'attr':{'readonly':'readonly'}})}}</div>
+                <div class="col">{{form_row(form.telephone,{'attr':{'readonly':'readonly'}})}}</div>
+                <div class="col">{{form_row(form.prenomsponsor,{'attr':{'readonly':'readonly'}})}}</div>
+                <div class="col">{{form_row(form.source,{'attr':{'readonly':'readonly'}})}}</div>
+                {% if app.user.roles != ['ROLE_USER'] %}
+                    <div class="col mt-5">{{form_row(form.afficher)}}</div>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="col-sm-4">
+            {% if app.user.roles != ['ROLE_USER'] %}
+            <div class="col">{{form_row(form.facture)}}</div>
+            <div class="col">{{form_row(form.idfiche)}}</div>
+            <div class="col">{{form_row(form.nationalite)}}</div>
+            <div class="col">{{form_row(form.telephonesponsor)}}</div>
+            {% else %}
+                <div class="col">{{form_row(form.facture,{'attr':{'readonly':'readonly'}})}}</div>
+                <div class="col">{{form_row(form.idfiche,{'attr':{'readonly':'readonly'}})}}</div>
+                <div class="col">{{form_row(form.nationalite,{'attr':{'readonly':'readonly'}})}}</div>
+                <div class="col">{{form_row(form.telephonesponsor,{'attr':{'readonly':'readonly'}})}}</div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+        </div>
+        <div class="col-6">
+        </div>
+    </div>
+    {% if app.user.roles == ['ROLE_USER'] %}
+        {% do form.afficher.setRendered() %}
+    {% endif %}
+    {% do form.source.setRendered() %}
+</div>
+<hr>
+{{ form_widget(form) }}
+{% if app.user.roles != ['ROLE_USER'] %}
+<div class="row">
+    <div class="col text-center">
+        <button class="btn btn-outline-default btn-rounded waves-effect text-center">{{ button|default('Enregistrer')}}<i class="far fa-paper-plane ml-2"></i></button>
+    </div>
+</div>
+{% endif %}
+{{ form_end(form) }}

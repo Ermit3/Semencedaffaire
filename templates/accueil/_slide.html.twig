@@ -1,0 +1,60 @@
+<div class="jumbotron-fluid text-center">
+    <div id="carousel-example-3" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-3" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-3" data-slide-to="1"></li>
+            <li data-target="#carousel-example-3" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item text-center active">
+                <div class="view">
+                    <img class="d-block w-100" src="{{ vich_uploader_asset(Slids[0], 'imagefile') }}" alt="e.service">
+                </div>
+                <div class="carousel-caption font-weight-bold" style="height: auto;">
+                    <div class="animated fadeInDown">
+                        <img width="10%" class="h1-responsive" src="{{ asset('./web/e.service.png') }}" alt="e.service">
+                        <h1 class="h1-responsive font-weight-bold mt-4">{{ Slids[0].textSlide}}</h1><!-- slideTexte  -->
+                        <h5 class="my-3">{{ Slids[0].soustext}}</h5>
+                        <a href="{# path('Emamesbiabos')#}" class="textAcc py-2 btn btn-default btn-rounded my-2">Cliquez ici pour acceder</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item text-center">
+                <div class="view">
+                    <img class="d-block w-100" src="{{ vich_uploader_asset(Slids[1], 'imagefile') }}" alt="e.service">
+                </div>
+                <div class="carousel-caption font-weight-bold" style="height: auto;">
+                    <div class="animated fadeInDown">
+                        <img width="10%" class="h1-responsive" src="{{ asset('./web/e.service.png') }}" alt="e.service">
+                        <h1 class="h1-responsive font-weight-bold mt-4">{{ Slids[1].textSlide}}</h1><!-- slideTexte  -->
+                        <h5 class="my-3">{{ Slids[1].soustext}}</h5>
+                        <a href="{# path('Emamesbiabos')#}" class="textAcc py-2 btn btn-default btn-rounded my-2">Cliquez ici pour acceder</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item text-center">
+                <div class="view">
+                    <img class="d-block w-100" src="{{ vich_uploader_asset(Slids[2], 'imagefile') }}" alt="e.service">
+                </div>
+                <div class="carousel-caption font-weight-bold" style="height: auto;">
+                    <div class="animated fadeInDown">
+                        <img width="10%" class="h1-responsive" src="{{ asset('./web/e.service.png') }}" alt="e.service">
+                        <h1 class="h1-responsive font-weight-bold mt-4">{{ Slids[2].textSlide}}</h1><!-- slideTexte  -->
+                        <h5 class="my-3">{{ Slids[2].soustext}}</h5>
+                        <a href="{# path('Emamesbiabos')#}" class="textAcc py-2 btn btn-default btn-rounded my-2">Cliquez ici pour acceder</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a class="carousel-control-prev" href="#carousel-example-3" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-3" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact : E.Service {% endblock %}
+
+{% block body %}
+<div class="container-fluid my-5">
+    <div class="my-1">
+        <div class="my-5">
+            <h1></h1><br>
+            <h1></h1><br>
+        </div>
+    </div>
+    <div class="container-fluid my-5">
+            <div class="row justify-content-center">
+                <div class="col-sm-6 mb-2">
+                        {{  include ('Nzoe/Contact/_form.html.twig', { button: 'Envoyer'}) }}
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock %}

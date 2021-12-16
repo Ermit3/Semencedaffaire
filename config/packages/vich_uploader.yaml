@@ -1,0 +1,38 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        arrpl_image:
+            uri_prefix: images/arrierePlans
+            upload_destination: '%kernel.project_dir%/public/images/arrierePlans'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+        utilisateur_image:
+            uri_prefix: images/utilisateur
+            upload_destination: '%kernel.project_dir%/public/images/utilisateur'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+        article_image:
+            uri_prefix: images/article
+            upload_destination: '%kernel.project_dir%/public/images/article'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+        produit_image:
+            uri_prefix: images/produit
+            upload_destination: '%kernel.project_dir%/public/images/produit'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+        slide_image:
+            uri_prefix: images/slide
+            upload_destination: '%kernel.project_dir%/public/images/slide'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+        present_image:
+            uri_prefix: images/presentation
+            upload_destination: '%kernel.project_dir%/public/images/presentation'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+        categorie_image:
+            uri_prefix: images/categorie
+            upload_destination: '%kernel.project_dir%/public/images/categorie'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer

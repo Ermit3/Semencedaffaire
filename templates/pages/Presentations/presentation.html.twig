@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Presentation : E.Service {% endblock %}
+
+{% block body %}
+    <div class="jumbotron-fluid mt-5">
+        <div class="text-center py-5" style="background-color:#f8f9f9">
+            {% if Present is defined %}
+                <img src="{{ asset('images/presentation/'~ Present[1] ~'') }}" height="100" class="d-inline-block align-top" alt="Semence d'Affaires">
+                {% if Present[1].titre is defined %}
+                    <h1 class="text-center text mt-4" style="font-size: 30px;">{{ Present[1].titre}}</h1>
+                {% endif %}
+                {% if Present[1].soustitre is defined %}
+                    <h6 class="text-center text my-1" style="font-size: 12px;">{{ Present[1].soustitre}}</h6>
+                {% endif %}
+                {% if Present[1].texte is defined %}
+                    <div class="container" id="sitepresent">
+                        <p class="text-justify text px-4" style="font-size: 20px;">{{ Present[1].texte}}</p>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="container-fluid mt-3">
+        {% for present in Present %}
+            <div class="row mb-5">
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-6">
+                    <div class="card-header text-show p-3" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">
+                        {{ present.titre }}
+                    </div>
+                    <div class="card-body z-depth-bbs">
+
+                        <div class="card-text text-show">
+                            {{ present.texte }}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="card-image">
+                        <img class="rounded" style="height: 90%;width: 40%;" src="../images/presentation/{{ present.filename }}" alt="Semence D'affaires">
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

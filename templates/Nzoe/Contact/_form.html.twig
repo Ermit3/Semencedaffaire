@@ -1,0 +1,39 @@
+{{ form_start(form) }}
+<div class="card rounded p-3 mb-3"
+        {# if produits is not defined and produits is empty %}
+              style="background-image: url('{{ vich_uploader_asset(arrpl, 'imagefile') }}'); background-repeat: no-repeat;margin-bottom: -200px; background-size: cover; background-position: center center;"
+        {% endif #}>
+    <div class="col-sm-12 mt-2 text-center">
+        <img src="web/e.service.png" height="80" class="d-inline-block align-top"
+             alt="mdb logo">
+    </div>
+    <hr>
+    <div class="row px-3 text-show">
+        <div class="col-sm-6">{{ form_row(form.nom) }}</div>
+        <div class="col-sm-6">{{ form_row(form.prenom) }}</div>
+    </div>
+    <div class="row px-3 text-show">
+        <div class="col-sm-12">{{ form_row(form.mail) }}</div>
+    </div>
+    <hr>
+    <div class="row px-3 text-show">
+        <div class="col-sm-12">{{ form_row(form.text) }}</div>
+    </div>
+    <hr>
+    {{ form_widget(form) }}
+    <div class="row">
+        <div class="form-group col text-center mb-3">
+            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+            <button type="submit" class="btn btn-outline-default btn-rounded waves-effect text-center">{{ button|default('Enregister') }} <i class="far fa-paper-plane ml-2"></i></button>
+        </div>
+        <script><!--
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Ldit-MUAAAAACeTmIFk6MdVoUI7LxWG9ORC7Lw-', {action: 'homepage'}).then(function(token) {
+                    document.getElementById('g-recaptcha-response').value=token;
+                });
+            });-->
+        </script>
+    </div>
+</div>
+{# do form.afficher.setRendered() #}
+{{ form_end(form) }}

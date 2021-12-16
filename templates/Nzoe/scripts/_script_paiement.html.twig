@@ -1,0 +1,63 @@
+<script>
+    $("document").ready(function(){
+        $(function() {
+
+            $("#childsOne__").hide();
+            $("#Left1__").hide();
+            $("#Left2__").hide();
+
+            $("#childsLeft1__").hide();
+            $("#childsLeft2__").hide();
+
+            $("#childsLeft111__").hide();
+            $("#childsLeft121__").hide();
+
+            $("#childsRight111__").hide();
+            $("#childsRight121__").hide();
+
+            $("#rootOne__").on('click', function() {
+                $("#childsOne__").show();
+                $("#Left1__").show();
+                $("#Left2__").show();
+
+            });
+
+            $("#Left1__").on('click', function() {
+                $("#childsLeft1__").show();
+                $("#childsLeft11__").show();
+                $("#childsLeft12__").show();
+            });
+
+            $("#Left2__").on('click', function() {
+                $("#childsLeft2__").show();
+                $("#childsRight11__").show();
+                $("#childsRight12__").show();
+            });
+
+            $("#childsLeft11__").on('click', function() {
+                $("#childsLeft111__").show();
+            });
+
+            $("#childsLeft12__").on('click', function() {
+                $("#childsLeft121__").show();
+            });
+
+            $("#childsLeft11__").on('click', function() {
+                $("#childsLeft111__").show();
+            });
+
+            $("#childsLeft12__").on('click', function() {
+                $("#childsLeft121__").show();
+            });
+
+            $("#childsRight11__").on('click', function() {
+                $("#childsRight111__").show();
+            });
+
+            $("#childsRight12__").on('click', function() {
+                $("#childsRight121__").show();
+            });
+
+        });
+    })
+</script>

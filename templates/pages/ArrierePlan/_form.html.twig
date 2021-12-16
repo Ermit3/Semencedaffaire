@@ -1,0 +1,30 @@
+{{ form_start(form) }}
+<div class="container">
+    <div class="row">
+        {% if form.vars.value.filename is not empty %}
+            <div class="col-12">
+                <img class="rounded" style="height: 90%;width: 100%;" src="../../../images/arrierePlans/{{ form.vars.value.filename }}" alt="Semence D'affaires">
+            </div>
+           {% else %}
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="col">{{ form_row(form.nom) }}</div>
+            <div class="col">{{ form_row(form.filename) }}</div>
+            <div class="col">{{ form_row(form.afficher) }}</div>
+        </div>
+        <div class="col-6">
+            <div class="col">{{ form_row(form.imagefile) }}</div>
+            <div class="col">{{ form_row(form.source,{'attr': {'readonly':'readonly'}}) }}</div>
+        </div>
+    </div>
+</div>
+<hr>
+{{ form_widget(form) }}
+<div class="row">
+    <div class="col text-center">
+        <button class="btn btn-outline-default btn-rounded waves-effect text-center">{{ button|default('Enregistrer')}}<i class="far fa-paper-plane ml-2"></i></button>
+    </div>
+</div>
+{{ form_end(form) }}

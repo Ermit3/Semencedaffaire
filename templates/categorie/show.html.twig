@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+    <h4>Categories</h4>
+
+<div class="container-fluid my-2">
+    <div class="row justify-content-center">
+        <div class="col-sm-8">
+            <div class="p-5 border-right">
+                <div class="row mt-1">
+                    <div class="col-lg-3 my-2">
+                        <div class="">
+                            <a href="{{ path('accueil') }}">
+                                <img class="card-img-top d-block rounded" style="width: 15%;height: 15%;" src="../../../../images/categorie/{{ categorie.filename }}"
+                                     alt="{{ categorie.nom }}"> {{ 'Retour' }}
+                            </a>
+
+                        </div>
+                        <div class="mt-2">
+
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    {% for produit in produits %}
+                    <div class="col-lg-3 my-3">
+                        <div class="produit rounded">
+                            <a href="{{ path('accueil.produit.elere',{id:produit.id}) }}">
+                            <img class="card-img-top d-block rounded" src="../../../../images/produit/{{ produit.filenameface }}"
+                                 alt="{{ produit.titre }}" width="50">
+                            </a>
+                            <div class="card-body">
+                                <div class="card-title" style="text-align:left;font-family:Georgia, 'Times New Roman', Times, serif, cursive, fantasy, 'URW Chancery L', 'Snell Roundhand', 'Snell Roundhand';">{{ produit.titre }}</div>
+                                <p class="card-text" style="text-align:justify;font-family:Georgia, 'Times New Roman', Times, serif, cursive, fantasy, 'URW Chancery L', 'Snell Roundhand', 'Snell Roundhand';">{{ produit.text|slice(0, 200) }}</p><br>
+                                <p class="card-text" style="text-align:justify;font-family:Georgia, 'Times New Roman', Times, serif, cursive, fantasy, 'URW Chancery L', 'Snell Roundhand', 'Snell Roundhand';">{{ produit.prix }} {{ 'FCFA' }}</p>
+                            </div>
+                            <a href="{{ path('accueil.produit.elere',{id:produit.id}) }}">
+                                <div class="card-footer text-muted panier">
+                                    <i class="fas fa-cart-arrow-down fa-2x"></i> Passer Commander
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 pt-5">
+            <div class="pt-4 rounded" style="background-color: #f8f8f8;">
+                <div class="p-2">
+                    <p class="textProdit">Mon panier</p>
+                    <p>Votre panier est vide.</p>
+                </div>
+                <hr>
+                <div class="p-1">
+                    <p class="textProdit">Les produits les plus vendus</p>
+                    <ul class="ullien">
+                        <li class="lien">Neil Armstrong</li>
+                        <li class="lien">Alan Bean</li>
+                        <li class="lien">Peter Conrad</li>
+                        <li class="lien">Edgar Mitchell</li>
+                        <li class="lien">Alan Shepard</li>
+                    </ul>
+                </div>
+                <hr>
+                <div class="p-1">
+                    <p class="textProdit">Les derniers articles</p>
+                    <ul class="ullien">
+                        <li class="lien">Conseils utiles de santé: le cœur</li>
+                        <li class="lien">Le citron pour la santé</li>
+                        <li class="lien">Une racine vertueuse</li>
+                    </ul>
+                </div>
+                <hr>
+                <div class="p-1">
+                    <p class="textProdit">Comment soigner?</p>
+                    <ul class="ullien">
+                        <li class="lien">Comment se débarrasser d'un fibrome de manière plus naturelle ?</li>
+                        <li class="lien">Corrige les dysfonctionnements sexuels</li>
+                        <li class="lien">Nottoie le colon</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+</div>
+    <div class="container-fluid my-1" style="background-color: #defeea;">
+        <div class="row justify-content-center">
+             <div class="col-sm-4 py-2">
+                 <div class="p-4 border-right">
+                     <h4 style="text-align:left;font-family:fantasy;">En savoir plus</h4>
+                     <p style="font-size:19px;text-align:justify;font-family:'Times New Roman';">
+                         La santé est une richesse inconnue pour celui qui la possède. Chaque jour chez Bio world, phytothérapeutes, médecins et professeurs chercheurs des universités travaillent passionnément à pérenniser la pratique de la médecine traditionnelle pour le bien-être de tous. Nous fabriquons et commercialisons des compléments alimentaires par la transformation des plantes et racines médicinales, purement biologiques provenant principalement de l’Afrique.
+                     </p>
+                 </div>
+             </div>
+            <div class="col-sm-4 py-2">
+                <div class="p-4 border-right">
+                    <h4 style="text-align:left;font-family:fantasy;">Nos Produits</h4>
+                    <p style="font-size:19px;text-align:justify;font-family:'Times New Roman';">
+                        Les compléments alimentaires de BIO-WORLD sont utiles pour l’entretien des organes humains. L’association de certains de ses compléments alimentaires peut éfficacement prévenir les éventuelles maladies auxquelles nous sommes exposés. Bio world est enregistré dans les registres de l’Agence Béninoise de Sécurité Sanitaire des Aliments (ABSSA) avec les certificats GMP et l’Autorisation de Mise sur le Marché. Nos gélules détiennent les certifications aux normes internationales, telles que : HALAL, GMP, CQM, CQC
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4 py-2">
+                <div class="p-4">
+                    <h4 style="text-align:left;font-family:fantasy;">Pourquoi devenir distributeur?</h4>
+                    <p style="font-size:19px;text-align:justify;font-family:'Times New Roman';">
+                        Un distributeur des produits de bio world est un représentant de la marque auprès de sa communauté. Il touche une commission allant de 20 à 50 % sur les produits vendus ainsi que plusieurs lots en nature. Chez bio world, nous accompagnons aussi le distributeur dans sa mise en place, que ce soit une boutique physique, des formations et/ou sensibilisation sur les produits et du matériel de travail pour renforcer le partenariat gagnant-gagnant.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

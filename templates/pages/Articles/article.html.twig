@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles : E.Service {% endblock %}
+
+{% block body %}
+    <div class="jumbotron-fluid mt-5">
+            <div class="text-center py-5" style="background-color:#f8f9f9">
+                {% if Present is defined %}
+                    <img src="{{ asset('images/presentation/'~ Present[1] ~'') }}" height="100" class="d-inline-block align-top" alt="Semence d'Affaires">
+                    {% if Present[1].titre is defined %}
+                        <h1 class="text-center text mt-4" style="font-size: 30px;">{{ Present[1].titre}}</h1>
+                    {% endif %}
+                    {% if Present[1].soustitre is defined %}
+                        <h6 class="text-center text my-1" style="font-size: 12px;">{{ Present[1].soustitre}}</h6>
+                    {% endif %}
+                    {% if Present[1].texte is defined %}
+                        <div class="container" id="sitepresent">
+                            <p class="text-justify text px-4" style="font-size: 20px;">{{ Present[1].texte}}</p>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+    </div>
+    <hr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                    <div class="text-center"><img src="../images/article/{{ article.filename }}" width="400" height="300" class="d-inline-block align-top z-depth-bbs" alt="Semence d'Affaires"></div>
+            </div>
+            <div class="col-sm-6 text-left">
+                <div class="text-show mb-3"><h2>{{ article.titre }}</h2></div>
+                <div class="text-show mb-3"><h4>{{ article.soustext }}</h4></div>
+                <div class="text-show mb-3"><h6>{{ article.text }}</h6></div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 text-center">
+                <h4 class="text">Contacter E.Service pour plus d'informations sur cet Article</h4>
+                <div class="btn btn-outline-default btn-rounded text-center mb-2 ml-3" role="tab" id="heading96">
+                    <a class="" data-toggle="collapse" href="#collapse96" aria-expanded="true"
+                       aria-controls="collapse96">
+                        Contact E.Service
+                    </a>
+                </div>
+                <div class="accordion md-accordion accordion-1 mt-1 mb-5 p-3" id="accordionEx23" role="tablist">
+                    <div class="card">
+                        <div id="collapse96" class="collapse" role="tabpanel" aria-labelledby="heading96"
+                             data-parent="#accordionEx23">
+                            <div class="p-3">
+                                <div class="row">
+                                    <div class="col-md-12 z-depth-bbs rounded">
+                                        {{  include ('Nzoe/Contact/_form.html.twig', { button: 'Envoyer'}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+    <hr>
+{% endblock %}

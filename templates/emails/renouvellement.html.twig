@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+    </div>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-1">
+            </div>
+            <div class="col-10">
+                <div class="container" style="background-color: #faffff;margin-top: 20px; border-radius: 10px; padding: 10px;box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.1);">
+                    <h1 class="gestion" style="margin-left: 10px;font-size: 20px; color: rgba(59,124,48,0.95);font-family: Georgia;font-style: italic;">E.SERVICE</h1>
+                    <div class="row">
+                        <div class="col-sm-10 p-5" style="font-family: Georgia;font-style: italic;">
+                            <h5 style="font-size: 15px; color: black; padding: 10px;">
+                                Bonjour<br><br>
+                                {% if renewpassword.mail is defined %}
+                                    Sujet : {{ ' Renouveller son Password '}}<br><br>
+                                    Email : {{ renewpassword.mail }}<br><br>
+                                    Validation : <br><br>
+                                    Merci de Cliquer sur lien :
+                                    <form method="post" action="{{ path('effifiEssape.login', {id:renewpassword.id }) }}" style="display: inline-block">
+                                        <input type="hidden" name="email" value="{{ renewpassword.mail }}">
+                                        <input type="hidden" name="id" value="{{ renewpassword.id }}">
+                                        <input type="hidden" name="_method" value="RENEW">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('renew' ~ renewpassword.id) }}">
+                                        <a href="http://semencedaffaires.com{{ path('effifiEssaperetour.login')}}?mail={{ renewpassword.mail }}&valide=true" class="btn btn-default rounded">Renouveller son Password</a>
+                                    </form>
+                                    <br><br>
+                                {% endif %}
+                                <hr>
+                                Vous pouvez le repondre sur cette Adresse : {{ renewpassword.mail }}
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+
+{% block body %}
+    <div class="container">
+        <div class="row textPanier">
+            <div class="col-lg-3">Produit : {{ ligneComm.produit }}</div>
+            <div class="col-lg-3">Prix Unitaire: {{ ligneComm.prixCommande }}</div>
+            <div class="col-lg-3">Quantité : {{ ligneComm.quantite }}</div>
+            <div class="col-lg-3">Total : {{ ligneComm.total }}</div>
+        </div>
+        <hr>
+    </div>
+    {{ include('panier/_form.html.twig') }}
+{% endblock %}

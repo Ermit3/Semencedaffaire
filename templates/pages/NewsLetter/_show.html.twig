@@ -1,0 +1,48 @@
+<div class="pagination">
+    {{ knp_pagination_render(newlePagine) }}
+</div>
+<div class="container-fluid table-responsive">
+    <table class="table table-striped text-show">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th class="w-20 text-left">Nom</th>
+            <th class="w-20 text-left">Prenom</th>
+            <th class="w-20 text-left">Mail</th>
+            <th class="w-30 text-center">Date</th>
+            <th class="w-30 text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for Newsletters in newlePagine %}
+            <tr class="">
+                <th>{{Newsletters.id}}</th>
+                <td class="text-left">{{Newsletters.nom}}</td>
+                <td class="text-left">{{Newsletters.prenom}}</td>
+                <td class="text-left">{{Newsletters.mail}}</td>
+                <td class="text-center">{{Newsletters.createAt|date('d/m/yy')}}</td>
+                <td class="text-center">
+                    <a href="{{ path('admin.edit.newsletter', {id: Newsletters.id, param : 'NewsLetters' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                    {% if app.user.roles != ['ROLE_USER'] %}
+                        <form method="post" action="{{ path('admin.delete.newsletter', {id: Newsletters.id }) }}" style="display: inline-block"
+                              onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cette Newletters ? ')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Newsletters.id) }}">
+                            <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                        </form>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    {% if app.user.roles != ['ROLE_USER'] %}
+        <div class="text-right">
+            <a href="{{ path('admin.add.newsletter') }}" class="btn btn-outline-primary btn-sm">Ajouter une Newsletters</a>
+        </div>
+    {% endif %}
+</div>
+<div class="pagination">
+    {{ knp_pagination_render(newlePagine) }}
+</div>

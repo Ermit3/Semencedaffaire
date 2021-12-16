@@ -1,0 +1,703 @@
+<div class="card-header text-show p-2">
+    Généalogie
+</div>
+
+<nav class="mt-2 text-show">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Arbre de semence</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Arbre d'affiliation</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Arbre de Paiement</a>
+        <a class="nav-item nav-link" id="nav-recherche-tab" data-toggle="tab" href="#nav-recherche" role="tab" aria-controls="nav-recherche" aria-selected="false">Chercher un utilisateur</a>
+    </div>
+</nav>
+<div class="tab-content text-center" id="nav-tabContent">
+    <!-- a mettre sur une page -->
+    <div class="tab-pane fade show active text-center" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="text-show">
+            <div class="row">
+                <div class="contour mb-5">
+                    <div class="tree">
+                        <ul>
+                            <li id="rootOne" class="flip-in-ver-right"> <a href="#" onclick="addUserChild();">
+                                    <div class="text-center" class="my-3">
+                                        <img src="../../{{ vich_uploader_asset(utilisateur, 'imagefile') }}"
+                                             class="rounded-circle" height="50" alt="{{ app.user.prenom }}" loading="lazy" />
+                                    </div>
+                                    <div class="text-center mt-1">
+                                    {{ app.user.nom|slice(0,7)|upper }}.<br>
+                                        {{ app.user.statut|upper }}<br>
+                                    {{ app.user.login|slice(0,7) }}.<br>
+                                    </div>
+                                </a>
+                                {% if app.user.lft != app.user.lvl %}
+                                <ul id="childsOne">
+                                    {% if EnfantGauch is defined and EnfantGauch is not empty %}
+                                    <li id="Left1" class="flip-in-ver-right"><a href="#">
+                                            <div class="text-center" class="my-3">
+                                                <img src="../../{{ vich_uploader_asset(EnfantGauch, 'imagefile') }}"
+                                                     class="rounded-circle" height="50" alt="{{ EnfantGauch.prenom  | upper ~ '.' ~ EnfantGauch.nom | upper }}" loading="lazy" />
+                                            </div>
+                                            <div class="text-center mt-1 p-1">
+                                            {{ EnfantGauch.nom|slice(0,7)|upper }}<br>
+                                                {{ EnfantGauch.statut|upper }}<br>
+                                            {{ EnfantGauch.login|slice(0,7) }}<br>
+                                            </div>
+                                        </a>
+                                        {% if EnfantGauch.lft != EnfantGauch.lvl %}
+                                        <ul id="childsLeft1">
+                                            {% if EnfantGauch1 is defined and EnfantGauch1 is not empty %}
+                                            <li id="childsLeft11" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../{{ vich_uploader_asset(EnfantGauch1, 'imagefile') }}"
+                                                             class="rounded-circle" height="50" alt="{{ EnfantGauch1.prenom  | upper ~ '.' ~ EnfantGauch1.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                    {{ EnfantGauch1.nom|slice(0,7)|upper }}<br>
+                                                        {{ EnfantGauch1.statut|upper }}<br>
+                                                    {{ EnfantGauch1.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                {% if EnfantGauch1.lft != EnfantGauch1.lvl %}
+                                                <ul id="childsLeft111">
+                                                    {% if EnfantGauch11 is defined and EnfantGauch11 is not empty %}
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../{{ vich_uploader_asset(EnfantGauch11, 'imagefile') }}"
+                                                                     class="rounded-circle" height="50" alt="{{ EnfantGauch11.prenom  | upper ~ '.' ~ EnfantGauch11.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                            {{ EnfantGauch11.nom|slice(0,7)|upper }}<br>
+                                                                {{ EnfantGauch11.statut|upper }}<br>
+                                                            {{ EnfantGauch11.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    {% endif %}
+                                                    {% if EnfantGauch12 is defined and EnfantGauch12 is not empty %}
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../{{ vich_uploader_asset(EnfantGauch12, 'imagefile') }}"
+                                                                     class="rounded-circle" height="50" alt="{{ EnfantGauch12.prenom  | upper ~ '.' ~ EnfantGauch12.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                            {{ EnfantGauch12.nom|slice(0,7)|upper }}<br>
+                                                                {{ EnfantGauch12.statut|upper }}<br>
+                                                            {{ EnfantGauch12.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    {% endif %}
+                                                </ul>
+                                                {% endif %}
+                                            </li>
+                                            {% endif %}
+                                            {% if EnfantGauch2 is defined and EnfantGauch2 is not empty %}
+                                            <li id="childsLeft12" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../{{ vich_uploader_asset(EnfantGauch2, 'imagefile') }}"
+                                                             class="rounded-circle" height="50" alt="{{ EnfantGauch2.prenom  | upper ~ '.' ~ EnfantGauch2.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                    {{ EnfantGauch2.nom|slice(0,7)|upper }}<br>
+                                                        {{ EnfantGauch2.statut|upper }}<br>
+                                                    {{ EnfantGauch2.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                {% if EnfantGauch2.lft != EnfantGauch2.lvl %}
+                                                <ul id="childsLeft121">
+                                                    {% if EnfantGauch21 is defined and EnfantGauch21 is not empty %}
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../{{ vich_uploader_asset(EnfantGauch21, 'imagefile') }}"
+                                                                     class="rounded-circle" height="50" alt="{{ EnfantGauch21.prenom  | upper ~ '.' ~ EnfantGauch21.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                            {{ EnfantGauch21.nom|slice(0,7)|upper }}<br>
+                                                                {{ EnfantGauch21.statut|upper }}<br>
+                                                            {{ EnfantGauch21.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    {% endif %}
+                                                    {% if EnfantGauch22 is defined and EnfantGauch22 is not empty %}
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../{{ vich_uploader_asset(EnfantGauch22, 'imagefile') }}"
+                                                                     class="rounded-circle" height="50" alt="{{ EnfantGauch22.prenom  | upper ~ '.' ~ EnfantGauch22.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                            {{ EnfantGauch22.nom|slice(0,7)|upper }}<br>
+                                                                {{ EnfantGauch22.statut|upper }}<br>
+                                                            {{ EnfantGauch22.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    {% endif %}
+                                                </ul>
+                                                {% endif %}
+                                            </li>
+                                            {% endif %}
+                                        </ul>
+                                        {% endif %}
+                                    </li>
+                                    {% endif %}
+                                    {% if EnfantDroit is defined and EnfantDroit is not empty %}
+                                    <li id="Left2" class="flip-in-ver-right"><a href="#">
+                                            <div class="text-center" class="my-3">
+                                                <img src="../../{{ vich_uploader_asset(EnfantDroit, 'imagefile') }}"
+                                                     class="rounded-circle" height="50" alt="{{ EnfantDroit.prenom  | upper ~ '.' ~ EnfantDroit.nom | upper }}" loading="lazy" />
+                                            </div>
+                                            <div class="text-center mt-1 p-1">
+                                            {{ EnfantDroit.nom|slice(0,7)|upper }}<br>
+                                                {{ EnfantDroit.statut|upper }}<br>
+                                            {{ EnfantDroit.login|slice(0,7) }}<br>
+                                            </div>
+                                        </a>
+                                        {% if EnfantDroit.lft != EnfantDroit.lvl %}
+                                        <ul id="childsLeft2">
+                                            {% if EnfantDroit1 is defined and EnfantDroit1 is not empty %}
+                                            <li id="childsRight11" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../{{ vich_uploader_asset(EnfantDroit1, 'imagefile') }}"
+                                                             class="rounded-circle" height="50" alt="{{ EnfantDroit1.prenom  | upper ~ '.' ~ EnfantDroit1.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                    {{ EnfantDroit1.nom|slice(0,7)|upper }}<br>
+                                                        {{ EnfantDroit1.statut|upper }}<br>
+                                                    {{ EnfantDroit1.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                {% if EnfantDroit1.lft != EnfantDroit1.lvl %}
+                                                <ul id="childsRight111">
+                                                    {% if EnfantDroit11 is defined and EnfantDroit11 is not empty %}
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../{{ vich_uploader_asset(EnfantDroit11, 'imagefile') }}"
+                                                                     class="rounded-circle" height="50" alt="{{ EnfantDroit11.prenom  | upper ~ '.' ~ EnfantDroit11.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                            {{ EnfantDroit11.nom|slice(0,7)|upper }}<br>
+                                                                {{ EnfantDroit11.statut|upper }}<br>
+                                                            {{ EnfantDroit11.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    {% endif %}
+                                                    {% if EnfantDroit12 is defined and EnfantDroit12 is not empty %}
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../{{ vich_uploader_asset(EnfantDroit12, 'imagefile') }}"
+                                                                     class="rounded-circle" height="50" alt="{{ EnfantDroit12.prenom  | upper ~ '.' ~ EnfantDroit12.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                            {{ EnfantDroit12.nom|slice(0,7)|upper }}<br>
+                                                                {{ EnfantDroit12.statut|upper }}<br>
+                                                            {{ EnfantDroit12.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    {% endif %}
+                                                </ul>
+                                                {% endif %}
+                                            </li>
+                                            {% endif %}
+                                            {% if EnfantDroit2 is defined and EnfantDroit2 is not empty %}
+                                            <li id="childsRight12" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../{{ vich_uploader_asset(EnfantDroit2, 'imagefile') }}"
+                                                             class="rounded-circle" height="50" alt="{{ EnfantDroit2.prenom  | upper ~ '.' ~ EnfantDroit2.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                    {{ EnfantDroit2.nom|slice(0,7)|upper }}<br>
+                                                        {{ EnfantDroit2.statut|upper }}<br>
+                                                    {{ EnfantDroit2.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                {% if EnfantDroit2.lft != EnfantDroit2.lvl %}
+                                                <ul id="childsRight121">
+                                                    {% if EnfantDroit21 is defined and EnfantDroit21 is not empty %}
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../{{ vich_uploader_asset(EnfantDroit21, 'imagefile') }}"
+                                                                     class="rounded-circle" height="50" alt="{{ EnfantDroit21.prenom  | upper ~ '.' ~ EnfantDroit21.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                            {{ EnfantDroit21.nom|slice(0,7)|upper }}<br>
+                                                                {{ EnfantDroit21.statut|upper }}<br>
+                                                            {{ EnfantDroit21.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    {% endif %}
+                                                    {% if EnfantDroit22 is defined and EnfantDroit22 is not empty %}
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../{{ vich_uploader_asset(EnfantDroit22, 'imagefile') }}"
+                                                                     class="rounded-circle" height="50" alt="{{ EnfantDroit22.prenom  | upper ~ '.' ~ EnfantDroit22.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                            {{ EnfantDroit22.nom|slice(0,7)|upper }}<br>
+                                                                {{ EnfantDroit22.statut|upper }}<br>
+                                                            {{ EnfantDroit22.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    {% endif %}
+                                                </ul>
+                                                {% endif %}
+                                            </li>
+                                            {% endif %}
+                                        </ul>
+                                        {% endif %}
+                                    </li>
+                                 {% endif %}
+                                </ul>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin de la page -->
+    <!-- a mettre sur une page -->
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="text-show">
+            <div class="row">
+                <div class="contour mb-5">
+                    <div class="trees">
+                        <ul>
+                            <li id="rootOne_" class="flip-in-ver-right"> <a href="#" onclick="addUserChild();">
+                                    <div class="text-center" class="my-3">
+                                        <img src="../../web/eservice.jpg"
+                                             class="rounded-circle" height="50" alt="{{ app.user.prenom }}" loading="lazy" />
+                                    </div>
+                                    <div class="text-center mt-1 p-1">
+                                    {{ app.user.nom|slice(0,7)|upper }}<br>
+                                    SA{{ app.user.id ~''~ app.user.prenom|slice(0,1)|upper ~''~ app.user.nom|slice(0,2)|upper}}<br>
+                                    {{ app.user.login|slice(0,7) }}<br>
+                                    </div>
+                                </a>
+                                <ul id="childsOne_">
+                                    <li id="Left1_" class="flip-in-ver-right"><a href="#">
+                                            <div class="text-center" class="my-3">
+                                                <img src="../../web/eservice2.jpg"
+                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                            </div>
+                                            <div class="text-center mt-1 p-1">
+                                                {{ 'BEKALE ONA BOUTAMBA'|slice(0,7)|upper }}<br>
+                                                SA{{ '4' ~''~ 'REGIS'|slice(0,1)|upper ~''~ 'BEKALE ONA BOUTAMBA'|slice(0,2)|upper}}<br>
+                                                {{ app.user.login|slice(0,7) }}<br>
+                                            </div>
+                                        </a>
+                                        <ul id="childsLeft1_">
+                                            <li id="childsLeft11_" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../web/eservice.jpg"
+                                                             class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                        {{ 'NGNINGONE 1'|slice(0,7)|upper }}<br>
+                                                        SA{{ '4' ~''~ 'REGIS'|slice(0,1)|upper ~''~ 'NGNINGONE 1'|slice(0,2)|upper}}<br>
+                                                        {{ app.user.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                <ul id="childsLeft111_">
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice2.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'NGNINGONE'|slice(0,7)|upper }}<br>
+                                                                SA{{ '4' ~''~ 'REGIS'|slice(0,1)|upper ~''~ 'NGNINGONE '|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'NGNINGONE 2'|slice(0,7)|upper }}<br>
+                                                                SA{{ '4' ~''~ 'STEPHANE'|slice(0,1)|upper ~''~ 'NGNINGONE '|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li id="childsLeft12_" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../web/eservice.jpg"
+                                                             class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                        {{ 'NGNINGONE OBIANG'|slice(0,7)|upper }}<br>
+                                                        SA{{ '4' ~''~ 'STEPHANE'|slice(0,1)|upper ~''~ 'NGNINGONE OBIANG '|slice(0,2)|upper}}<br>
+                                                        {{ app.user.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                <ul id="childsLeft121_">
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'NGNINGONE OBIANG 1'|slice(0,7)|upper }}<br>
+                                                                SA{{ '4' ~''~ 'STEPHANE'|slice(0,1)|upper ~''~ 'NGNINGONE OBIANG 1 '|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice2.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'NGNINGONE OBIANG 2'|slice(0,7)|upper }}<br>
+                                                                SA{{ '4' ~''~ 'STEPHANE'|slice(0,1)|upper ~''~ 'NGNINGONE OBIANG 2 '|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="Left2_" class="flip-in-ver-right"><a href="#">
+                                            <div class="text-center" class="my-3">
+                                                <img src="../../web/eservice.jpg"
+                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                            </div>
+                                            <div class="text-center mt-1 p-1">
+                                                {{ 'NGNINGONE OBIANG'|slice(0,7)|upper }}<br>
+                                                SA{{ '2' ~''~ 'THERESE'|slice(0,1)|upper ~''~ 'NGNINGONE OBIANG'|slice(0,2)|upper}}<br>
+                                                {{ app.user.login|slice(0,7) }}<br>
+                                            </div>
+                                        </a>
+                                        <ul id="childsLeft2_">
+                                            <li id="childsRight11_" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../web/eservice2.jpg"
+                                                             class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                        {{ 'ONA OBIANG 1'|slice(0,7)|upper }}<br>
+                                                        SA{{ '4' ~''~ 'STEPHANE'|slice(0,1)|upper ~''~ 'ONA OBIANG 1 '|slice(0,2)|upper}}<br>
+                                                        {{ app.user.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                <ul id="childsRight111_">
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'NGNINGONE 1'|slice(0,7)|upper }}<br>
+                                                                SA{{ '4' ~''~ 'STEPHANE'|slice(0,1)|upper ~''~ 'NGNINGONE 1 '|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice2.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'NGNINGONE 2'|slice(0,7)|upper }}<br>
+                                                                SA{{ '4' ~''~ 'THERESE'|slice(0,1)|upper ~''~ 'NGNINGONE 2 '|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li id="childsRight12_" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../web/eservice.jpg"
+                                                             class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                        {{ 'ONA OBIANG 2'|slice(0,7)|upper }}<br>
+                                                        SA{{ '4' ~''~ 'THERESE'|slice(0,1)|upper ~''~ 'ONA OBIANG 2 '|slice(0,2)|upper}}<br>
+                                                        {{ app.user.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                <ul id="childsRight121_">
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'ONA OBIANG 2'|slice(0,7)|upper }}<br>
+                                                                SA{{ '4' ~''~ 'THERESE'|slice(0,1)|upper ~''~ 'ONA OBIANG 2 '|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice2.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'ONA OBIANG 2'|slice(0,7)|upper }}<br>
+                                                                SA{{ '4' ~''~ 'THERESE'|slice(0,1)|upper ~''~ 'ONA OBIANG 2 '|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin de la page -->
+    <!-- a mettre sur une page -->
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <div class="text-show">
+            <div class="row">
+                <div class="contour mb-5">
+                    <div class="trees_">
+                        <ul>
+                            <li id="rootOne__" class="flip-in-ver-right"> <a href="#" onclick="addUserChild();">
+                                    <div class="text-center" class="my-3">
+                                        <img src="../../web/eservice2.jpg"
+                                             class="rounded-circle" height="50" alt="{{ app.user.prenom }}" loading="lazy" />
+                                    </div>
+                                    <div class="text-center mt-1 p-1">
+                                        {{ app.user.nom|slice(0,7)|upper }}<br>
+                                        SA{{ app.user.id ~''~ app.user.prenom|slice(0,1)|upper ~''~ app.user.nom|slice(0,2)|upper}}<br>
+                                        {{ app.user.login|slice(0,7) }}<br>
+                                    </div>
+                                </a>
+                                <ul id="childsOne__">
+                                    <li id="Left1__" class="flip-in-ver-right"><a href="#">
+                                            <div class="text-center" class="my-3">
+                                                <img src="../../web/eservice2.jpg"
+                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                            </div>
+                                            <div class="text-center mt-1 p-1">
+                                                {{ 'BEKALE ONA BOUTAMBA'|slice(0,7)|upper }}<br>
+                                                SA{{ '7'|slice(0,1)|upper ~''~ 'Therese'|slice(0,1)|upper ~''~ 'BEKALE ONA BOUTAMBA'|slice(0,2)|upper}}<br>
+                                                {{ app.user.login|slice(0,7) }}<br>
+                                            </div>
+                                        </a>
+                                        <ul id="childsLeft1__">
+                                            <li id="childsLeft11__" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../web/eservice.jpg"
+                                                             class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                        {{ 'NGNINGONE 1'|slice(0,7)|upper }}<br>
+                                                        SA{{ '7'|slice(0,1)|upper ~''~ 'Therese'|slice(0,1)|upper ~''~ 'NGNINGONE 1'|slice(0,2)|upper}}<br>
+                                                        {{ app.user.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                <ul id="childsLeft111__">
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice2.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'NGNINGONE'|slice(0,7)|upper }}<br>
+                                                                SA{{ '7'|slice(0,1)|upper ~''~ 'Therese'|slice(0,1)|upper ~''~ 'NGNINGONE'|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'NGNINGONE 2'|slice(0,7)|upper }}<br>
+                                                                SA{{ '7' ~''~ 'Therese'|slice(0,1)|upper ~''~ 'NGNINGONE 2'|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li id="childsLeft12__" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../web/eservice.jpg"
+                                                             class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                        {{ 'NGNINGONE 2'|slice(0,7)|upper }}<br>
+                                                        SA{{ '7' ~''~ 'Therese'|slice(0,1)|upper ~''~ 'NGNINGONE 2'|slice(0,2)|upper}}<br>
+                                                        {{ app.user.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                <ul id="childsLeft121__">
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice2.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ ' NGNINGONE 1'|slice(0,7)|upper }}<br>
+                                                                SA{{ '7' ~''~ 'Therese'|slice(0,1)|upper ~''~ 'NGNINGONE 2'|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ ' NGNINGONE 2'|slice(0,7)|upper }}<br>
+                                                                SA{{ '7' ~''~ 'Therese'|slice(0,1)|upper ~''~ 'NGNINGONE 2'|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="Left2__" class="flip-in-ver-right"><a href="#">
+                                            <div class="text-center" class="my-3">
+                                                <img src="../../web/eservice.jpg"
+                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                            </div>
+                                            <div class="text-center mt-1 p-1">
+                                                {{ ' NGNINGONE OBIANG'|slice(0,7)|upper }}<br>
+                                                SA{{ '7'|slice(0,1)|upper ~''~ 'Therese'|slice(0,1)|upper ~''~ 'NGNINGONE OBIANG'|slice(0,2)|upper}}<br>
+                                                {{ app.user.login|slice(0,7) }}<br>
+                                            </div>
+                                        </a>
+                                        <ul id="childsLeft2__">
+                                            <li id="childsRight11__" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../web/eservice.jpg"
+                                                             class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                        {{ 'ONA OBIANG 1'|slice(0,7)|upper }}<br>
+                                                        SA{{ '7'|slice(0,1)|upper ~''~ 'Therese'|slice(0,1)|upper ~''~ 'ONA OBIANG 1'|slice(0,2)|upper}}<br>
+                                                        {{ app.user.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                <ul id="childsRight111__">
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice2.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'NGNINGONE 1'|slice(0,7)|upper }}<br>
+                                                                SA{{ '7' ~''~ 'Therese'|slice(0,1)|upper ~''~ 'NGNINGONE 1'|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'NGNINGONE 2'|slice(0,7)|upper }}<br>
+                                                                SA{{ '7' ~''~ 'Therese'|slice(0,1)|upper ~''~ 'NGNINGONE 2'|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li id="childsRight12__" class="flip-in-ver-right"><a href="#">
+                                                    <div class="text-center" class="my-3">
+                                                        <img src="../../web/eservice.jpg"
+                                                             class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="text-center mt-1 p-1">
+                                                        {{ 'ONA OBIANG 2'|slice(0,7)|upper }}<br>
+                                                        SA{{ '7' ~''~ 'Therese'|slice(0,1)|upper ~''~ 'ONA OBIANG 2'|slice(0,2)|upper}}<br>
+                                                        {{ app.user.login|slice(0,7) }}<br>
+                                                    </div>
+                                                </a>
+                                                <ul id="childsRight121__">
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice2.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'ONA OBIANG 2'|slice(0,7)|upper }}<br>
+                                                                SA{{ '7' ~''~ 'Therese'|slice(0,1)|upper ~''~ 'ONA OBIANG 2'|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="flip-in-ver-right"><a href="#">
+                                                            <div class="text-center" class="my-3">
+                                                                <img src="../../web/eservice.jpg"
+                                                                     class="rounded-circle" height="50" alt="{{ app.user.prenom  | upper ~ '.' ~ app.user.nom | upper }}" loading="lazy" />
+                                                            </div>
+                                                            <div class="text-center mt-1 p-1">
+                                                                {{ 'ONA OBIANG 2'|slice(0,7)|upper }}<br>
+                                                                SA{{ '7' ~''~ 'Therese'|slice(0,1)|upper ~''~ 'ONA OBIANG 2'|slice(0,2)|upper}}<br>
+                                                                {{ app.user.login|slice(0,7) }}<br>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade show text-center" id="nav-recherche" role="tabpanel" aria-labelledby="nav-recherche-tab">
+        <div class="row">
+                <form class="form-inline" method="post" action="">
+                    <div class="form-group">
+                        <div class="col-sm-8">
+                            <label for="Recherche" class="sr-only">Utilisateur</label>
+                            <input type="text" class="form-control" id="inputRecherche" name="inputRecherche" placeholder="Recherche..." value="">
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-info rounded">Valider</button>
+                        </div>
+                    </div>
+                </form>
+
+        </div>
+    </div>
+    <!-- fin de la page -->
+</div>
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    {{ include('Nzoe/scripts/_script.html.twig') }}
+    {{ include('Nzoe/scripts/_script_affiliation.html.twig') }}
+    {# include('Nzoe/scripts/_script_paiement.html.twig') #}
+{% endblock javascripts %}

@@ -1,0 +1,35 @@
+{% if app.user.nom is defined  %}
+    <div class="container mb-5">
+        {{ form_start(form, {'action': path('Commande_Panier')}) }}
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="">{{ form_row(form.fullName) }}</div>
+                <div class="">{{ form_row(form.codepostal) }}</div>
+                <div class="">{{ form_row(form.ville) }}</div>
+            </div>
+            <div class="col-lg-6">
+                <div class="">{{ form_row(form.telephone) }}</div>
+                <div class="">{{ form_row(form.email) }}</div>
+                <div class="">{{ form_row(form.adresse) }}</div>
+            </div>
+            {% for item in items %}
+                <input type="hidden" name="LignesCommande" value="{{ item.produits }}"/>
+                <input type="hidden" name="LignesCommande" value="{{ item.qty }}"/>
+            {% endfor %}
+        </div>
+        {{ form_widget(form) }}
+        <hr>
+        {% if edit is defined and edit == 'CommandeEdit' %}
+        {% else %}
+        <div class="text-center">
+            <button type="submit" class="btn btn-success"> Je valide ma commande !</button>
+        </div>
+        {% endif %}
+        {{ form_end(form) }}
+    </div>
+{% else %}
+    <div class="container text-center pb-4">
+        <h5>Vous devez être connecté pour confirmer cette commande !</h5>
+        <a href="{{ path('login',{choix:'Accueil', param:'Accueil'}) }}" class="btn btn-success">Connexion</a> ou <a href="{{ path('admin.add.util', {'param':items[0].produits.id}) }}?returnToUser=true" class="btn btn-info">Créez un Compte</a>
+    </div>
+{% endif %}

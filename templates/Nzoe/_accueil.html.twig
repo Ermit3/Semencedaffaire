@@ -1,0 +1,26 @@
+{% if choix == 'arborescence' %}
+    {% include 'Nzoe/Calculs/_arbo.html.twig' with { user: app.user} %}
+{% elseif choix == 'membres' %}
+    {% include 'Nzoe/Calculs/_memb.html.twig' with { user: app.user} %}
+      {% else %}
+    {% include 'Nzoe/selectionSousTableau.html.twig' %}
+{% endif %}
+<div class="card-body">
+    <div class="">
+        {% if choix == 'gain' %}
+            {% include 'Nzoe/Calculs/_gain.html.twig' with { user: app.user} %}
+        {% endif %}
+        {% if choix == 'cotisation' %}
+            {% include 'Nzoe/Calculs/_cotis.html.twig' with { user: app.user} %}
+        {% endif %}
+        {% if choix == 'transactions' %}
+            {% include 'Nzoe/Calculs/_trans.html.twig' with { user: app.user} %}
+        {% endif %}
+        {% if choix == 'referent' %}
+            {% include 'Nzoe/Calculs/_refer.html.twig' with { user: app.user} %}
+        {% endif %}
+        {% if choix == 'Accueil' %}
+
+        {% endif %}
+    </div>
+</div>

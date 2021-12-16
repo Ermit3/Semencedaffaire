@@ -1,0 +1,32 @@
+<div class="container text-center">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb text-show pl-3 py-2">
+            <li class="breadcrumb-item"><a href="{{ path(path, {param:'Accueil',choix:'Accueil'}) }}">Accueil</a></li>
+            <li class="breadcrumb-item"><a href="{{ path(path, {param:'Accueil',choix:'Accueil'}) }}">Nzoe</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('Essap', {param:'Accueil',choix:'Accueil'}) }}">{{ nom }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ role }}</li>
+        </ol>
+    </nav>
+</div>
+<div class="container text-center">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success animated bounceOut delay-5s">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger animated bounceOut delay-5s">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning animated bounceOut delay-5s">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('info') %}
+        <div class="alert alert-info animated bounceOut delay-5s">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>

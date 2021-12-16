@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S.A : SUPER-ADMIN{% endblock %}
+
+{% block body %}
+    <div class="card-image text mt-5">
+        {%  include 'Nzoe/_tableaudebord.html.twig' with {'nom': 'Administration du Site', 'role': 'SUPER-ADMIN', 'path':'Essap', param:'Accueil', choix:'Accueil' } %}
+        <hr>
+    </div>
+    {%  include 'Nzoe/_nzen.html.twig' with {'nom': 'Administration du Site', 'role': 'SUPER-ADMIN', 'path':'Essap', param:'Accueil', choix:'Accueil'} %}
+    <div class="container-fluid">
+        <div class="row mx-2">
+            <div class="col-sm-2 py-4 backGroundproduit mb-3" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:#ffffff;" >
+                {%  include 'Nzoe/_accordeon.html.twig' with {'Produits': 'Produits', 'id':'01'} %}
+                <hr>
+            </div>
+            <div class="col-sm-9 mx-2 py-2 mb-3">
+             {% if param == 'Accueil' %}
+                 {% include 'Nzoe/_accueil.html.twig' with { gain: 'Calcul du Gain', arborescence: 'Arborescence' , cotisations : '100 000 000', transactions : '0', referent: '6', membresGroupe : '24'} %}
+             {% endif %}
+             {% if param == "ArrierePlan" %}
+                <div class="text-show ml-3">{{ 'Arriere Plan' }} / <a href="{{ path('Essap',{ param:'ArrierePlan', choix:'Accueil'}) }}"> All Arriere Plan </a></div>
+                <hr>
+                {% if news is defined %}
+                    {% include 'pages/ArrierePlan/_new.html.twig' %}
+                {% elseif edit is defined %}
+                    {% include 'pages/ArrierePlan/_edit.html.twig' %}
+                {% else %}
+                    {% include 'pages/ArrierePlan/_show.html.twig' %}
+                {% endif %}
+             {% endif %}
+             {% if param == "Utilisateurs" %}
+                <div class="text-show ml-3">{{ 'Utilisateurs' }} / <a href="{{ path('Essap',{ param:'Utilisateurs', choix:'Accueil'}) }}"> All Utilisateurs </a></div>
+                <hr>
+                {% if news is defined %}
+                    {% include 'pages/Utilisateurs/_new.html.twig' %}
+                {% elseif edit is defined %}
+                    {% include 'pages/Utilisateurs/_edit.html.twig' %}
+                {% else %}
+                    {% include 'pages/Utilisateurs/_show.html.twig' %}
+                {% endif %}
+             {% endif %}
+             {% if param == "Cotisations" %}
+                <div class="text-show ml-3">{{ 'Cotisations' }} / <a href="{{ path('Essap',{ param:'Cotisations', choix:'Accueil'}) }}"> All Cotisations </a></div>
+                <hr>
+                {% if news is defined %}
+                    {% include 'pages/Cotisations/_new.html.twig' %}
+                {% elseif edit is defined %}
+                    {% include 'pages/Cotisations/_edit.html.twig' %}
+                {% else %}
+                    {% include 'pages/Cotisations/_show.html.twig' with { dernier:last } %}
+                {% endif %}
+             {% endif %}
+             {% if param == "Slides" %}
+                <div class="text-show ml-3">{{ 'Slides' }} / <a href="{{ path('Essap',{ param:'Slides', choix:'Accueil'}) }}"> All Slide </a></div>
+                <hr>
+                {% if news is defined %}
+                    {% include 'pages/Slides/_new.html.twig' %}
+                {% elseif edit is defined %}
+                    {% include 'pages/Slides/_edit.html.twig' %}
+                {% else %}
+                    {% include 'pages/Slides/_show.html.twig' %}
+                {% endif %}
+             {% endif %}
+             {% if param == "Article" %}
+                <div class="text-show ml-3">{{ 'Article' }} / <a href="{{ path('Essap',{ param:'Article', choix:'Accueil'}) }}"> All Article </a></div>
+                <hr>
+                {% if news is defined %}
+                    {% include 'pages/Articles/_new.html.twig' %}
+                {% elseif edit is defined %}
+                    {% include 'pages/Articles/_edit.html.twig' %}
+                {% else %}
+                    {% include 'pages/Articles/_show.html.twig' %}
+                {% endif %}
+             {% endif %}
+             {% if param == "Presentation" %}
+                <div class="text-show ml-3">{{ 'Presentation' }} / <a href="{{ path('Essap',{ param:'Presentation', choix:'Accueil'}) }}"> All Presentation </a></div>
+                <hr>
+                {% if news is defined %}
+                    {% include 'pages/Presentations/_new.html.twig' %}
+                {% elseif edit is defined %}
+                    {% include 'pages/Presentations/_edit.html.twig' %}
+                {% else %}
+                    {% include 'pages/Presentations/_show.html.twig' %}
+                {% endif %}
+             {% endif %}
+             {% if param == "Categorie" %}
+                <div class="text-show ml-3">{{ 'Categorie' }} / <a href="{{ path('Essap',{ param:'Categorie', choix:'Accueil'}) }}"> All Categorie </a></div>
+                <hr>
+                {% if news is defined %}
+                    {% include 'categorie/new.html.twig' %}
+                {% elseif edit is defined %}
+                    {% include 'categorie/edit.html.twig' %}
+                {% else %}
+                    {% include 'categorie/index.html.twig' %}
+                {% endif %}
+             {% endif %}
+             {% if param == "Commandes" %}
+                <div class="text-show ml-3">{{ 'Commandes' }} / <a href="{{ path('Essap',{ param:'Commandes', choix:'Accueil'}) }}"> My Order </a></div>
+                <hr>
+                {% if edit is defined and edit == 'CommandeEdit' %}
+                    {% include 'commandes/edit.html.twig' %}
+                {% else %}
+                    {% include 'commandes/index.html.twig' %}
+                {% endif %}
+             {% endif %}
+                {% if param == "AllCommandes" %}
+                    <div class="text-show ml-3">{{ 'AllCommandes' }} / <a href="{{ path('Essap',{ param:'AllCommandes', choix:'Accueil'}) }}"> All Order </a></div>
+                    <hr>
+                        {% include 'commandes/allindex.html.twig' %}
+                {% endif %}
+             {% if param == "Produits" %}
+                <div class="text-show ml-3">{{ 'Produits' }} / <a href="{{ path('Essap',{ param:'Produits', choix:'Accueil'}) }}"> All Produits </a></div>
+                <hr>
+                {% if news is defined %}
+                    {% include 'pages/Produits/_new.html.twig' %}
+                {% elseif edit is defined %}
+                    {% include 'pages/Produits/_edit.html.twig' %}
+                {% else %}
+                    {% include 'pages/Produits/_show.html.twig' %}
+                {% endif %}
+             {% endif %}
+             {% if param == "Couleurs" %}
+                <div class="text-show ml-3">{{ 'Couleurs' }} / <a href="{{ path('Essap',{ param:'Couleurs', choix:'Accueil'}) }}"> All Couleurs </a></div>
+                <hr>
+                {% if news is defined %}
+                    {% include 'pages/Couleur/_new.html.twig' %}
+                {% elseif edit is defined %}
+                    {% include 'pages/Couleur/_edit.html.twig' %}
+                {% else %}
+                    {% include 'pages/Couleur/_show.html.twig' %}
+                {% endif %}
+             {% endif %}
+             {% if param == "Commentaires" %}
+                <div class="text-show ml-3">{{ 'Commentaires' }} / <a href="{{ path('Essap',{ param:'Commentaires', choix:'Accueil'}) }}"> All Commentaires </a></div>
+                <hr>
+                {% if news is defined %}
+                    {% include 'pages/Commentaires/_new.html.twig' %}
+                {% elseif edit is defined %}
+                    {% include 'pages/Commentaires/_edit.html.twig' %}
+                {% else %}
+                    {% include 'pages/Commentaires/_show.html.twig' %}
+                {% endif %}
+             {% endif %}
+             {% if param == "NewsLetters" %}
+                <div class="text-show ml-3">{{ 'NewsLetters' }} / <a href="{{ path('Essap',{ param:'NewsLetters', choix:'Accueil'}) }}"> All NewsLetters </a></div>
+                <hr>
+                {% if news is defined %}
+                    {% include 'pages/NewsLetter/_new.html.twig' %}
+                {% elseif edit is defined %}
+                    {% include 'pages/NewsLetter/_edit.html.twig' %}
+                {% else %}
+                    {% include 'pages/NewsLetter/_show.html.twig' %}
+                {% endif %}
+             {% endif %}
+                {% if param == "Contacts" %}
+                    <div class="text-show ml-3">{{ 'Contacts' }} / <a href="{{ path('Essap',{ param:'Contacts', choix:'Accueil'}) }}"> All Contacts </a></div>
+                    <hr>
+                    {% if news is defined %}
+                        {% include 'Nzoe/Contact/_new.html.twig' %}
+                    {% elseif edit is defined %}
+                        {% include 'Nzoe/Contact/_edit.html.twig' %}
+                    {% else %}
+                        {% include 'Nzoe/Contact/_show.html.twig' %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

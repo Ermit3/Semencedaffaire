@@ -1,0 +1,60 @@
+{{ form_start(form) }}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            {% if app.user.roles != ['ROLE_USER'] %}
+                <div class="col">{{form_row(form.nom)}}</div>
+            {% endif %}
+        </div>
+        <div class="col-sm-6">
+            {% if app.user.roles != ['ROLE_USER'] %}
+            <div class="col">{{form_row(form.prenom)}}</div>
+            {% endif %}
+        </div>
+        <div class="col-sm-6">
+            {% if app.user.roles != ['ROLE_USER'] %}
+            <div class="col">{{form_row(form.mail)}}</div>
+            {% endif %}
+        </div>
+        <div class="col-sm-6">
+            {% if app.user.roles != ['ROLE_USER'] %}
+            <div class="col">{{form_row(form.sujet)}}</div>
+            {% endif %}
+        </div>
+        <div class="col-sm-12">
+            {% if app.user.roles != ['ROLE_USER'] %}
+                <div class="col">{{form_row(form.afficher)}}</div>
+            {% endif %}
+        </div>
+        <div class="col-sm-12">
+            {% if app.user.roles != ['ROLE_USER'] %}
+            <div class="col">{{form_row(form.text)}}</div>
+            {% else %}
+                <div class="col">{{form_row(form.text,{'attr':{'readonly':'readonly'}})}}</div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+        </div>
+        <div class="col-6">
+        </div>
+    </div>
+    {% if app.user.roles == ['ROLE_USER'] %}
+        {% do form.sujet.setRendered() %}
+        {% do form.mail.setRendered() %}
+        {% do form.nom.setRendered() %}
+        {% do form.prenom.setRendered() %}
+        {% do form.afficher.setRendered() %}
+    {% endif %}
+</div>
+<hr>
+{{ form_widget(form) }}
+{% if app.user.roles != ['ROLE_USER'] %}
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-outline-default btn-rounded waves-effect text-center">{{ button|default('Enregistrer')}}<i class="far fa-paper-plane ml-2"></i></button>
+        </div>
+    </div>
+{% endif %}
+{{ form_end(form) }}

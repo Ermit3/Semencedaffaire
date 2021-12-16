@@ -1,0 +1,52 @@
+<div class="pagination">
+    {{ knp_pagination_render(coulePagine) }}
+</div>
+<div class="container-fluid table-responsive">
+    <table class="table table-striped text-show">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th class="w-20 text-left">Couleur</th>
+            <th class="w-20 text-left">Ilustration Couleur</th>
+            <th class="w-20 text-left"></th>
+            <th class="w-20 text-left">Dégradé</th>
+            <th class="w-20 text-left">Ilustration Dégradé</th>
+            <th class="w-20 text-left"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for Couleur in coulePagine %}
+            <tr class="">
+                <th>{{Couleur.id}}</th>
+                <td class="text-left">{{Couleur.nom}}</td>
+                <td class="text-left" style="background-color:{{Couleur.nom}}" ></td>
+                <td class="text-left"></td>
+                <td class="text-left">{{Couleur.degrade}}</td>
+                <td class="text-left" style="background-color:{{Couleur.degrade}}" ></td>
+                <td class="text-center">
+                    {% if Couleur.afficher == 1 %}
+                         <a href="{{ path('admin.edit.effet', {id: Couleur.id, param : 'Couleurs' }) }}" style="visibility: hidden" class="btn btn-outline-success btn-sm">Choisir</a>
+                       {% else %}
+                         <a href="{{ path('admin.edit.effet', {id: Couleur.id, param : 'Couleurs' }) }}" class="btn btn-outline-success btn-sm">Choisir</a>
+                    {% endif %}
+                    <a href="{{ path('admin.edit.couleur', {id: Couleur.id, param : 'Couleurs' }) }}" class="btn btn-outline-primary btn-sm ml-2">Editer</a>
+                    <form method="post" action="{{ path('admin.delete.couleur', {id: Couleur.id }) }}" style="display: inline-block"
+                          onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cette Couleur ? ')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Couleur.id) }}">
+                        <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <div class="text-right">
+        <a href="{{ path('admin.add.couleur') }}" class="btn btn-outline-primary btn-sm">Ajouter une Couleur</a>
+    </div>
+</div>
+<hr>
+<div class="pagination">
+    {{ knp_pagination_render(coulePagine) }}
+</div>

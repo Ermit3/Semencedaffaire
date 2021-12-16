@@ -1,0 +1,38 @@
+{{ form_start(form) }}
+<div class="container">
+    <div class="row">
+        <div class="col-6 text-center">
+            {% if form.vars.value.filenameface is not empty %}
+                <img class="rounded z-depth-bbs" style="height: 80%;width: 50%;" src="../../../../images/produit/{{ form.vars.value.filenameface }}" alt="Semence D'affaires">
+            {% else %}
+            {% endif %}
+        </div>
+        <div class="col-6 text-center">
+            {% if form.vars.value.filenameface is not empty %}
+                <img class="rounded z-depth-bbs" style="height: 80%;width: 50%;" src="../../../../images/produit/{{ form.vars.value.filenamedos }}" alt="Semence D'affaires">
+            {% else %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="col">{{ form_row(form.titre) }}</div>
+            <div class="col">{{ form_row(form.text) }}</div>
+            <div class="col">{{ form_row(form.imagefile) }}</div>
+            <div class="col">{{ form_row(form.afficher) }}</div>
+        </div>
+        <div class="col-6">
+            <div class="col">{{ form_row(form.soustext) }}</div>
+            <div class="col">{{ form_row(form.source,{'attr': {'readonly':'readonly'}}) }}</div>
+            <div class="col">{{ form_row(form.imagefiledos) }}</div>
+        </div>
+    </div>
+</div>
+<hr>
+{{ form_widget(form) }}
+<div class="row">
+    <div class="col text-center">
+        <button class="btn btn-outline-default btn-rounded waves-effect text-center">{{ button|default('Enregistrer')}}<i class="far fa-paper-plane ml-2"></i></button>
+    </div>
+</div>
+{{ form_end(form) }}

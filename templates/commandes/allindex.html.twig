@@ -1,0 +1,57 @@
+
+{% block body %}
+    <div class="navigation">
+        {{ knp_pagination_render(ligncomPagine) }}
+    </div>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Image</th>
+                <th>Etat</th>
+                <th>Prix Unitaire</th>
+                <th>Quantite</th>
+                <th>Total</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lignecommande in allCommandes %}
+            <tr>
+                <td>{{ lignecommande }}</td>
+                <td class="text-left"><img class="z-depth-1 rounded" style="height: 60px;width: 60px;" src="../../{{ vich_uploader_asset(lignecommande.produit, 'imagefile') }}"></td>
+                <td>{{ lignecommande.commande.statutCom }}</td>
+                <td>{{ lignecommande.prixCommande }}</td>
+                <td>{{ lignecommande.quantite }}</td>
+                <td>{{ lignecommande.total }}</td>
+                <td>
+                    <a href="{{ path('elere_commande', {'id': lignecommande.id, param : 'Commandes' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                    {% if app.user.roles is defined and app.user.roles is not empty %}
+                        {% if app.user.roles == ['ROLE_SUPER_ADMIN'] %}
+                            <form method="post" action="{{ path('admin.delete.ligneCommande', {id: lignecommande.id }) }}" style="display: inline-block"
+                                  onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cette Ligne de Commande ? ')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ lignecommande.id) }}">
+                                <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr class="textProdit">
+                <td colspan="4">Vous n'avez pas de commandes pour le moment</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(ligncomPagine) }}
+    </div>
+</div>
+    <hr>
+    <div class="text-right">
+
+    </div>
+{% endblock %}

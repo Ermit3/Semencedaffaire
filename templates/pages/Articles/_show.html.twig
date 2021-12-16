@@ -1,0 +1,45 @@
+<div class="pagination">
+    {{ knp_pagination_render(artiPagines) }}
+</div>
+<div class="container-fluid table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th class="w-20 text-left">Titre</th>
+            <th class="w-30 text-center">image</th>
+            <th class="w-20 text-center">afficher</th>
+            <th class="w-30 text-center">Actions</th>
+            <th class="w-30 text-center">Source</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for Article in artiPagines %}
+            <tr>
+                <th scope="row">{{ Article.id }}</th>
+                <td class="text-left">{{ Article.titre }}</td>
+                <td class="text-center"><img class="z-depth-1 rounded" style="height: 40px;width: 70px;" src="../../{{ vich_uploader_asset(Article, 'imagefile') }}"></td>
+                <td class="text-center">{{ Article.afficher }}</td>
+                <td class="text-center">
+                    <a href="{{ path('admin.edit.article', {id: Article.id, param : 'Article' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                    <form method="post" action="{{ path('admin.delete.article', {id: Article.id }) }}" style="display: inline-block"
+                          onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cet Article ? ')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Article.id) }}">
+                        <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+                <th class="text-center">{{ Article.source }}</th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <div class="text-right">
+        <a href="{{ path('admin.new.article') }}" class="btn btn-outline-primary btn-sm">Ajouter un Article</a>
+    </div>
+</div>
+<hr>
+<div class="pagination">
+    {{ knp_pagination_render(artiPagines) }}
+</div>

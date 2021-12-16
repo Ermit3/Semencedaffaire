@@ -1,0 +1,97 @@
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg fixed-top scrolling-navbar px-5" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">
+    <a class="navbar-brand" href="{{ path('accueil') }}"><img id="imagelogo" src="{{ asset('./web/e.service.png') }}"
+                                                            height="35" class="d-inline-block align-top" alt="mdb logo"></a>
+    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse"
+            data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="elegant-color"> </span>
+        <span class="elegant-color"> </span>
+        <span class="elegant-color"> </span>
+    </button>
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link menuAkobi" href="{{ path('accueil') }}">Accueil</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link menuAkobi" href="{{ path('accueil.present.elere') }}">Qui Sommes nous ?
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menuAkobi" href="{{ path('accueil.real.elere') }}">Nos Réalisations</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle menuAkobi" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Offres</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="soumenu menuAkobi" href="{# path('Esset') #}#Site">Groupe</a>
+                    <a class="soumenu menuAkobi" href="{# path('logos.presentation') #}">Parrainage</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menuAkobi" href="{{ path('accueil.contact.elere') }}">Nous contacter</a>
+            </li>
+            <li class="nav-item dropdown me-3 me-lg-1">
+                <ul
+                        class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdownMenuLink"
+                >
+                    <li><a class="dropdown-item" href="#">Some news</a></li>
+                    <li><a class="dropdown-item" href="#">Another news</a></li>
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <form class="form-inline mr-3" action="{# path('Ezeng') #}">
+            <div class="md-form my-0">
+                <input class="form-control mr-sm-2 black-text" id="Eyola" name="Eyola" type="text"
+                       placeholder="Recherches..." aria-label="Search">
+                <input class="btn btn-outline-white btn-rounded btn-sm" type="submit">
+            </div>
+        </form>
+        {% if items[0] is defined and items[0].qty >= 1  %}
+        <a href="{{ path('show_elere') }}" title="Mon Panier">
+            <i class="ml-2 fas fa-cart-arrow-down fa-lg"></i>
+            <span class="badge rounded-pill badge-notification bg-success mr-2">
+                {{ quantite }}
+            </span>
+            {# total ~ ' €'#}
+        </a>
+        {% endif %}
+        <a class="nav-link hidden-arrow" href="#">
+            <i class="far fa-envelope text-white"></i>
+            <span class="badge rounded-pill badge-notification bg-danger">{% if emails is defined and emails is not empty %}{{ emails }}{% endif %}</span>
+        </a>
+        {% if app.user.nom is not defined %}
+            <div class=""><a href="{{ path('Essap',{ param:'Accueil', choix:'Accueil'}) }}" class="btn btn-outline-white btn-rounded btn-sm">Connexion</a>
+            </div>
+        {% else %}
+            <a href="{{ path('Essap',{ param:'Accueil', choix:'Accueil'}) }}" title="Back-Office">
+                <i class="ml-2 fas fa-user-shield fa-lg text-success mr-2"></i>
+            </a>
+            {% if edit is defined and edit is not empty %}
+                <img src="../../../{{ vich_uploader_asset(utilisateur, 'imagefile') }}" class="rounded-circle menuAkobi text-black-50" height="50" alt="" loading="lazy">
+                {% elseif news is defined and news is not empty %}
+                    {% if utilisateur is defined and utilisateur is not empty %}
+                        <img src="../../../../{{ vich_uploader_asset(utilisateur, 'imagefile') }}" class="rounded-circle menuAkobi text-black-50" height="50" alt="" loading="lazy">
+                        {% else %}
+                        <img src="../../../../service.jpg }}" class="rounded-circle menuAkobi text-black-50" height="50" alt="" loading="lazy">
+                    {% endif %}
+                {% else %}
+                    {% if utilisateur is defined and utilisateur is not empty %}
+                    <img src="../../{{ vich_uploader_asset(utilisateur, 'imagefile') }}" class="rounded-circle menuAkobi text-black-50" height="50" alt="" loading="lazy">
+                    {% else %}
+                        <img src="../../../../service.jpg }}" class="rounded-circle menuAkobi text-black-50" height="50" alt="" loading="lazy">
+                    {% endif %}
+            {% endif %}
+            <div class="ml-1 menuAkobi text-white mr-2" title="{% if app.user.prenom is defined and app.user.prenom is not empty %}{{ app.user.prenom }}{% endif %}{% if app.user.nom is defined and app.user.nom is not empty %}{{ app.user.nom | upper }}{% endif %}">{% if app.user.prenom is defined and app.user.prenom is not empty %}{{ app.user.prenom | slice(0, 1) | upper ~ ' - ' }}{% endif %}{% if app.user.nom is defined and app.user.nom is not empty %}{{ app.user.nom | upper }}{% endif %}</div>
+            <div class="ml-1"><a href="{{ path('logout') }}" class="btn btn-outline-white btn-rounded btn-sm">Déconnexion</a>
+            </div>
+        {% endif %}
+    </div>
+</nav>

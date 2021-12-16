@@ -1,0 +1,31 @@
+{{ form_start(form) }}
+<div class="container">
+    <div class="row text-center">
+        <div class="col-sm-3">
+            <div class="col py-2"></div>
+        </div>
+        <div class="col-sm-3">
+            <div class="col py-2" style="background-color:{{couleurs.nom}}" >{{form_widget(form.nom, {'attr':{'color':couleurs.nom}})}}</div>
+        </div>
+        <div class="col-sm-3">
+            <div class="col py-2" style="background-color:{{couleurs.degrade}}">{{form_widget(form.degrade, {'attr':{'color':couleurs.degrade}})}}</div>
+        </div>
+        <div class="col-sm-3">
+            <div class="col py-2" ></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+        </div>
+        <div class="col-6">
+        </div>
+    </div>
+</div>
+<hr>
+{{ form_widget(form) }}
+<div class="row">
+    <div class="col text-center">
+        <button class="btn btn-outline-default btn-rounded waves-effect text-center">{{ button|default('Enregistrer')}}<i class="far fa-paper-plane ml-2"></i></button>
+    </div>
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,49 @@
+
+{% block body %}
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th class="text-center">Catégorie</th>
+                <th>Date création</th>
+                <th>Source</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.nom }}</td>
+                <td class="text-center"><img class="z-depth-1 rounded" style="height: 60px;width: 60px;" src="../../{{ vich_uploader_asset(categorie, 'imagefile') }}"></td>
+                <td>{{ categorie.createdAt ? categorie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ categorie.nom ? categorie.nom : '' }}</td>
+                <td>
+                    <a href="{{ path('semence_categorie_edit', {'id': categorie.id, param : 'Categorie' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                    {% if app.user.roles is defined and app.user.roles is not empty %}
+                        {% if app.user.roles != ['ROLE_USER'] %}
+                            <form method="post" action="{{ path('semence_categorie_delete', {id: categorie.id }) }}" style="display: inline-block"
+                                  onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cette Categorie ? ')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
+                                <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <hr>
+    <div class="text-right">
+        <a href="{{ path('semence_categorie_new') }}" class="btn btn-outline-success btn-sm">Ajouter une Catégorie</a>
+    </div>
+{% endblock %}

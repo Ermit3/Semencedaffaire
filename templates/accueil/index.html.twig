@@ -1,0 +1,259 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Semence d'Affaires
+{% endblock %}
+
+{% block body %}
+	<div class="jumbotron-fluid">
+		{% include 'accueil/_slide.html.twig' with {'Slids':Slids} %}
+	</div>
+	<div class="container-fluid my-2">
+		<div class="row justify-content-center">
+
+			<div class="container-fluid my-2">
+				<div class="row justify-content-center">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="container text-center mb-4">
+									{% for message in app.flashes('success') %}
+										<div class="alert alert-success alert-dismissible fade show animated bounceOut delay-5s" role="alert">
+											{{ message }}
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									{% endfor %}
+									{% for message in app.flashes('error') %}
+										<div class="alert alert-success alert-dismissible fade show animated bounceOut delay-5s" role="alert">
+											{{ message }}
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									{% endfor %}
+									{% for message in app.flashes('info') %}
+										<div class="alert alert-success alert-dismissible fade show animated bounceOut delay-5s" role="alert">
+											{{ message }}
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									{% endfor %}
+									{% for message in app.flashes('warning') %}
+										<div class="alert alert-success alert-dismissible fade show animated bounceOut delay-5s" role="alert">
+											{{ message }}
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+
+						<!-- TEST PARRAIN -->
+						<div class="row">
+							{{ form_start(formView) }}
+							{{ form_errors(formView) }}
+							<div class="row align-items-end">
+								<div class="col-md-4">
+									{{ form_label(formView,'Votre parrain') }}
+									{{ form_widget(formView) }}
+								</div>
+
+								<button class="btn btn-lg btn-primary" type="submit">
+									Confirmer
+								</button>
+							</div>
+							{{ form_end(formView) }}
+						</div>
+
+						<h3 style="text-align:center;font-family: fantasy;">Les types de produits</h3>
+						<div class="row mt-2 text-center">
+							{% for Categorie in Categories %}
+								<div class="col-lg-3 col-md-6 text-center">
+									<div class="card-body white">
+										<a href="{{ path('semence_categorie_show',{id : Categorie.id }) }}">
+											<div class="catergorie">
+												<img class="card-img-top d-block rounded-top catergorie" src="../../../../images/categorie/{{ Categorie.filename }}" alt="{{ Categorie.nom }}" width="70%">
+												<div class="card-footer" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }}); color:white;">
+													<p style="color: white;font-size: 18px;margin-top: 10px;font-family: fantasy;">{{ Categorie.nom }}</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+						<hr>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid mt-1 text-center" style="background-color: #f3f3f3">
+			<div class="row mt-5 mb-5 text-center">
+				<div class="mt-3 ml-3 text-center">
+					<p class="position-absolute font-weight-bold" style="z-index: 99;color: black;font-size: 18px;font-family: fantasy;">{{ 'Meilleurs Ventes' }}</p>
+				</div>
+			</div>
+			<!--Carousel Wrapper-->
+			<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+					<li data-target="#multi-item-example" data-slide-to="1"></li>
+				</ol>
+				<div
+					class="carousel-inner" role="listbox">
+					<!--First slide-->
+					<div class="carousel-item active">
+						{% for Produit in Produits %}
+							<div class="col-lg-2 my-3">
+								<div class="produit rounded pt-3 white">
+									<a href="{{ path('accueil.produit.elere',{id : Produit.id }) }}">
+										<img class="card-img-top d-block rounded" src="../../../../images/produit/{{ Produit.filenameface }}" alt="{{ Produit.titre~ ' € ' }}" width="50">
+									</a>
+									<div class="card-body white">
+										<div class="card-title" style="text-align:left;font-weight: bold;font-size: 13px;font-family:Georgia, 'Times New Roman', Times, serif, cursive, fantasy, 'URW Chancery L', 'Snell Roundhand', 'Snell Roundhand';">{{ Produit.titre|slice(0, 24) }}</div>
+										<p class="card-text" style="text-align:justify;font-family:Georgia, 'Times New Roman', Times, serif, cursive, fantasy, 'URW Chancery L', 'Snell Roundhand', 'Snell Roundhand';">{{ Produit.text|slice(0, 110)  }}...</p>
+										<div class="card-title" style="text-align:left;font-weight: bold;font-size: 19px;font-family:'Times New Roman', Times, serif, cursive, fantasy, 'URW Chancery L', 'Snell Roundhand', 'Snell Roundhand';">{{ Produit.prix ~ ' F FCA' }}</div>
+									</div>
+									<a href="{{ path('accueil.produit.elere',{id : Produit.id }) }}">
+										<div class="card-footer text-muted" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">
+											<i class="fas fa-cart-arrow-down fa-2x white-text"></i>
+											<p class="white-text d-inline">
+												Passer Commande</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="carousel-item">
+						{% for Produi in Produits %}
+							<div class="col-lg-2 my-3">
+								<div class="produit rounded pt-3 white">
+									<a href="{{ path('accueil.produit.elere',{id : Produi.id }) }}">
+										<img class="card-img-top d-block rounded" src="../../../../images/produit/{{ Produi.filenamedos }}" alt="{{ Produi.titre ~ ' € ' }}" width="50">
+									</a>
+									<div class="card-body white">
+										<div class="card-title" style="text-align:left;font-weight: bold;font-size: 13px;font-family:Georgia, 'Times New Roman', Times, serif, cursive, fantasy, 'URW Chancery L', 'Snell Roundhand', 'Snell Roundhand';">{{ Produi.titre|slice(0, 24) }}</div>
+										<p class="card-text" style="text-align:justify;font-family:Georgia, 'Times New Roman', Times, serif, cursive, fantasy, 'URW Chancery L', 'Snell Roundhand', 'Snell Roundhand';">{{ Produi.text|slice(0, 110) }}...</p>
+										<div class="card-title" style="text-align:left;font-weight: bold;font-size: 19px;font-family:'Times New Roman', Times, serif, cursive, fantasy, 'URW Chancery L', 'Snell Roundhand', 'Snell Roundhand';">{{ Produi.prix ~ ' F FCA' }}</div>
+									</div>
+									<a href="{{ path('accueil.produit.elere',{id : Produi.id }) }}">
+										<div class="card-footer text-muted" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }}); color:white;">
+											<i class="fas fa-cart-arrow-down fa-2x white-text"></i>
+											<p class="white-text d-inline">
+												Passer Commande</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<!--/.Carousel Wrapper-->
+		</div>
+		<div class="container-fluid my-2">
+			<div class="row justify-content-center">
+				<div style="position:relative;">
+					<div style="color:#000000;background-color:white;text-align:center;padding:50px 40px;">
+						<h3 style="text-align:center;font-family:'Times New Roman', Luminari, fantasy;">SEMENCE D'AFFAIRES</h3>
+						<div class="container">
+							<div class="card-deck text-center mt-5 mb-3">
+								{% for Article in Articles %}
+									<div class="col-lg-4 col-md-6 pb-4 text-show">
+										<div class="card card-cascade narrower change border">
+											<div class="view view-cascade overlay">
+												<img src="{{ vich_uploader_asset(Article, 'imagefile')}}" class="card-img-top" alt="{{ Article.titre }}">
+												<a href="{{ path("accueil.art.elere",{ id:Article.id }) }}">
+													<div class="mask rgba-white-slight"></div>
+												</a>
+											</div>
+											<div class="card-body card-body-cascade">
+												<h6 class="card-title mt-4" style="text-align:left;font-size: 13px;font-family:Georgia, 'Times New Roman', Times, serif, cursive, fantasy, 'URW Chancery L', 'Snell Roundhand', 'Snell Roundhand';">{{ Article.titre|slice(0, 24)|upper }}</h6>
+												<h5 class="card-title">{{ Article.soustext|slice(0, 20) }}</h5>
+												<p class="card-text text-justify">{{ Article.text|slice(0, 50) }}...</p>
+												<div class="text-center">
+													<a href="{{ path("accueil.art.elere",{ id:Article.id }) }}" type="button" class="btn z-depth btn-rounded mb-1 text-center">Lire ls suite</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="text-center py-5 mb-5 " style="background-color:#f8f9f9">
+	{% if Present is defined %}
+		<img src="{{ asset('images/presentation/'~ Present[0] ~'') }}" height="100" class="d-inline-block align-top" alt="Semence d'Affaires">
+		{% if Present[0].titre is defined %}
+			<h3 class="text-center text mt-4" style="font-size: 30px;">{{ Present[0].titre|slice(0, 25)}}</h3>
+		{% endif %}
+		{% if Present[0].soustitre is defined %}
+			<h6 class="text-center text my-1" style="font-size: 20px;">{{ Present[0].soustitre}}</h6>
+		{% endif %}
+		{% if Present[0].texte is defined %}
+			<div class="container" id="sitepresent">
+				<p class="text-justify text px-4" style="font-size: 18px;">{{ Present[0].texte}}</p>
+			</div>
+		{% endif %}
+	{% endif %}
+</div>
+
+<div class="container-fluid my-2">
+	<div class="row justify-content-center">
+		<div style="position:relative;">
+			<div style="color:#000000;background-color:white;text-align:center;padding:50px 40px;">
+				<h3 style="text-align:center;font-family:'Times New Roman', Luminari, fantasy;">Nos Produits</h3>
+				<div class="container">
+					<div class="card-deck text-center mt-5 mb-5">
+						{% for Produit in Produits %}
+							<div class="col-lg-4 col-md-6 pb-4 text-show">
+								<div class="card card-cascade narrower change border">
+									<div class="view view-cascade overlay">
+										<img src="{{ vich_uploader_asset(Produit, 'imagefile')}}" class="card-img-top" alt="{{ Produit.titre }}">
+										<a href="{{ path("accueil.produit.elere",{ id:Produit.id }) }}">
+											<div class="mask rgba-white-slight"></div>
+										</a>
+									</div>
+									<div class="card-body card-body-cascade">
+										<h6 class="card-title mt-4" style="text-align:left;font-size: 13px;font-family:Georgia, 'Times New Roman', Times, serif, cursive, fantasy, 'URW Chancery L', 'Snell Roundhand', 'Snell Roundhand';">{{ Produit.titre|slice(0, 24) }}</h6>
+										<h5 class="card-title">{{ Produit.soustext|slice(0, 20) }}</h5>
+										<p class="card-text text-justify">{{ Produit.prix ~ ' FCFA' }}</p>
+										<div class="text-center">
+											<a href="{{ path("accueil.produit.elere",{id:Produit.id }) }}" type="button" class="btn z-depth btn-rounded mb-1 text-center">Lire ls suite</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="text-center py-5 mb-5 " style="background-color:#f8f9f9">
+	{% if Present is defined %}
+		<img src="{{ asset('images/presentation/'~ Present[1] ~'') }}" height="100" class="d-inline-block align-top" alt="Semence d'Affaires">
+		{% if Present[1].titre is defined %}
+			<h3 class="text-center text mt-4" style="font-size: 30px;">{{ Present[1].titre|slice(0, 25)}}</h3>
+		{% endif %}
+		{% if Present[1].soustitre is defined %}
+			<h6 class="text-center text my-1" style="font-size: 20px;">{{ Present[1].soustitre|slice(0, 60)}}</h6>
+		{% endif %}
+		{% if Present[1].texte is defined %}
+			<div class="container" id="sitepresent">
+				<p class="text-justify text px-4" style="font-size: 18px;">{{ Present[1].texte|slice(0, 1900)}}</p>
+			</div>
+		{% endif %}
+	{% endif %}
+</div>{% endblock %}

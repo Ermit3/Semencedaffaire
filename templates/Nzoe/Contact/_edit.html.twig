@@ -1,0 +1,89 @@
+{% block body %}
+    <div class="container text-left">
+        <div class="p-2 mb-5">
+            <fieldset class="border rounded p-3">
+               <div class="text-show">{{ Contact.text }}</div>
+            </fieldset>
+            <br/>
+            <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                <div class="card text-show">
+                    <div class="btn btn-outline-default btn-rounded waves-effect text-center mb-4" role="tab" id="headingOne1">
+                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                            <h6 class="">
+                                Cliquez ici pour reponde à {{ Contact.nom }}
+                            </h6>
+                        </a>
+                    </div>
+                    <!-- Card body -->
+                    <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
+                         data-parent="#accordionEx">
+                        <div class="card-body">
+                            {{ form_start(formRepo,{'action': path('admin.add.reponse')}) }}
+                            <div class="container" style="margin-top: -20px;">
+                                <div class="row"><input type="hidden" id="{{ formRepo.vars.value.id }}" name="{{ formRepo.vars.value.id }}" />
+                                    <div class="col-sm-6">
+                                        <div class="col">{{ form_row(formRepo.type,{ 'attr':{'readonly':'1'}}) }}</div>
+                                        <div class="col">{{ form_row(formRepo.mailsource,{ 'attr':{'readonly':'1'}}) }}</div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="col">{{ form_row(formRepo.contact,{ 'attr':{'readonly':'1'}}) }}</div>
+                                        <div class="col">{{ form_row(formRepo.maildestination,{ 'attr':{'readonly':'1'}}) }}</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 text-show">
+                                        <div class="col">{{ form_row(formRepo.text) }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="" style="visibility: hidden"><!-- -->
+                                <div class="col">{{ form_row(formRepo.idrepondre,{ 'attr':{'readonly':'1'}}) }}</div>
+                            </div>
+                            <div class="row" style="margin-top: -60px;">
+                                <div class="form-group col text-center mb-3">
+                                    <button class="btn btn-outline-default btn-rounded waves-effect text-center">{{ button|default('Enregister') }} <i class="far fa-paper-plane ml-2"></i></button>
+                                </div>
+                            </div>
+                            {% do formRepo.commentaire.setRendered() %}
+                            {% do formRepo.source.setRendered() %}
+                            {{ form_end(formRepo) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="btn btn-outline-default btn-rounded waves-effect text-center mb-2 mt-4" role="tab" id="headingOne2">
+                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                            <h6 class="text">
+                                Reponses à {{ Contact.nom }}
+                            </h6>
+                        </a>
+                    </div>
+                    <!-- Card body -->
+                    <div id="collapseOne2" class="collapse" role="tabpanel" aria-labelledby="headingOne2"
+                         data-parent="#accordionEx">
+                        <div class="container">
+                            {% for reponse in reponses %}
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-10 pt-0">
+                                        <p class="text-default">Message : </p>
+                                        <p>{{ reponse.text }}</p>
+                                        <!--Destinataire : <p class="text-default"><a>{# reponse.maildestination #}</a></p>-->
+                                    </div>
+                                    <div class="col-sm-2 pt-1 text-center">
+                                        <form method="post" action="{{ path('admin.reponse.delete', { id: reponse.id,idc: Contact.id }) }}" style="display: inline-block"
+                                              onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cette Reponse ? ')">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reponse.id) }}">
+                                            <button class="btn btn-outline-danger btn-rounded waves-effect text-center">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

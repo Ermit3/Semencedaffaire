@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-3 mt-5" id="accueil">
+            {% if app.user.roles != ['ROLE_USER'] and app.user.roles != ['ROLE_ADMIN'] and app.user.roles != ['ROLE_SUPER_ADMIN'] %}
+            <div class="card p-2">
+                <a href="{{ path('Essap',{ param:'ArrierePlan', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Arriere Plan</a>
+                <a href="{{ path('Essap',{ param:'Article', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Articles</a>
+                <a href="{{ path('Essap',{ param:'Commentaires', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Commentaires</a>
+                <a href="{{ path('Essap',{ param:'Contacts', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Contacts</a>
+            </div>
+            {% else %}
+                <div class="card">
+                    {% if prodEdit is defined and prodEdit is not empty %}
+                        <img class="border-primary" src="../../../../{{ vich_uploader_asset(Slids[0], 'imagefile') }}" alt="e.service" style="max-height: 150px;">
+                    {% elseif edit is defined and edit is not empty %}
+                        <img class="border-primary" src="../../../{{ vich_uploader_asset(Slids[0], 'imagefile') }}" alt="e.service" style="max-height: 150px;">
+                    {% elseif news is defined and news is not empty %}
+                        {% if Slids[0] is defined and Slids[0] is not empty %}
+                        <img class="border-primary" src="../../../../{{ vich_uploader_asset(Slids[0], 'imagefile') }}" alt="e.service" style="max-height: 150px;">
+                        {% endif %}
+                    {% else %}
+                        <img class="border-primary" src="../../{{ vich_uploader_asset(Slids[0], 'imagefile') }}" alt="e.service" style="max-height: 150px;">
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-12 col-md-3 mt-5">
+            <div class="card p-2">
+                <a href="{{ path('Essap',{ param:'Cotisations', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Cotisations</a>
+                {% if app.user.roles != ['ROLE_USER'] and app.user.roles != ['ROLE_ADMIN'] and app.user.roles != ['ROLE_SUPER_ADMIN'] %}
+                <a href="{{ path('Essap',{ param:'Grade', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Grade</a>
+                <a href="{{ path('Essap',{ param:'Groupe', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Groupe</a>
+                <a href="{{ path('Essap',{ param:'NewsLetters', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">NewsLetter</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12 col-md-3 mt-5">
+            <div class="card p-2">
+                <a href="{{ path('Essap',{ param:'Produits', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Produits</a>
+                {% if app.user.roles != ['ROLE_USER'] and app.user.roles != ['ROLE_ADMIN'] and app.user.roles != ['ROLE_SUPER_ADMIN'] %}
+                <a href="{{ path('Essap',{ param:'RenewPassword', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">RenewPassword</a>
+                <a href="{{ path('Essap',{ param:'Contacts', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Reponses</a>
+                <a href="{{ path('Essap',{ param:'Slides', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Slides</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12 col-md-3 mt-5">
+            {% if app.user.roles != ['ROLE_USER'] and app.user.roles != ['ROLE_ADMIN'] and app.user.roles != ['ROLE_SUPER_ADMIN'] %}
+            <div class="card p-2">
+                <a href="{{ path('Essap',{ param:'Transitions', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Transitions</a>
+                <a href="{{ path('Essap',{ param:'Utilisateurs', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Utilisateurs</a>
+                <a href="{{ path('Essap',{ param:'Videos', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Vidéos</a>
+                <a href="{{ path('Essap',{ param:'Couleurs', choix:'Accueil'}) }}" class="btn" style="background: linear-gradient(to top, {{ couleurs.nom }}, {{ couleurs.degrade }});color:white;">Couleurs</a>
+            </div>
+            {% else %}
+                <div class="card">
+                    {% if prodEdit is defined and prodEdit is not empty %}
+                        <img class="border-primary" src="../../../../{{ vich_uploader_asset(Slids[1], 'imagefile') }}" alt="e.service" style="max-height: 150px;">
+                    {% elseif edit is defined and edit is not empty %}
+                        <img class="border-primary" src="../../../{{ vich_uploader_asset(Slids[1], 'imagefile') }}" alt="e.service" style="max-height: 150px;">
+                    {% elseif news is defined and news is not empty %}
+                    {% if Slids[0] is defined and Slids[0] is not empty %}
+                        <img class="border-primary" src="../../../../{{ vich_uploader_asset(Slids[0], 'imagefile') }}" alt="e.service" style="max-height: 150px;">
+                        {% endif %}
+                    {% else %}
+                        <img class="border-primary" src="../../{{ vich_uploader_asset(Slids[1], 'imagefile') }}" alt="e.service" style="max-height: 150px;">
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="pagination">
+    {{ knp_pagination_render(presPagines) }}
+</div>
+<div class="container-fluid table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th class="w-30 text-left">Titre</th>
+            <th class="w-20 text-left">Sous Titre</th>
+            <th class="w-20 text-left">image</th>
+            <th class="w-10 text-center">afficher</th>
+            <th class="w-20 text-center">Actions</th>
+            <th class="w-20 text-left">Source</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for Presente in presPagines %}
+            <tr>
+                <th>{{ Presente.id }}</th>
+                <td class="text-left">{{ Presente.titre }}</td>
+                <td class="text-left">{{ Presente.soustitre }}</td>
+                <td class="text-left"><img class="z-depth-1 rounded" style="height: 50px;width: 50px;" src="../../{{ vich_uploader_asset(Presente, 'imagefile') }}"></td>
+                <td class="text-center">{{ Presente.afficher }}</td>
+                <td class="text-center">
+                    <a href="{{ path('admin.edit.presentation', {id: Presente.id, param : 'Presentation' }) }}" class="btn btn-outline-primary btn-sm">Editer</a>
+                    <form method="post" action="{{ path('admin.delete.presentation', {id: Presente.id }) }}" style="display: inline-block"
+                          onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cette Presentation ? ')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Presente.id) }}">
+                        <button class="btn btn-outline-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+                <td class="text-left">{{ Presente.utilisateur }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <div class="text-right">
+        <a href="{{ path('admin.new.presentation') }}" class="btn btn-outline-primary btn-sm">Ajouter une Presentation</a>
+    </div>
+</div>
+<hr>
+<div class="pagination">
+    {{ knp_pagination_render(presPagines) }}
+</div>
